@@ -1,0 +1,12 @@
+[user]
+	name = zweicoder
+	email = zhiwei_chong@mymail.sutd.edu.sg
+[core]
+	autocrlf = input
+	excludesfile = /home/pewpew/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[push]
+	default = simple
+[color "diff"]
+	old = red strike
+	new = green italic
