@@ -25,6 +25,9 @@ autocmd BufEnter * lcd %:p:h
 set number
 nnoremap <silent> <esc><esc> :noh<CR>
 
+" File Folding
+:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+
 " ==============================
 " => Mappings
 " ===============================
