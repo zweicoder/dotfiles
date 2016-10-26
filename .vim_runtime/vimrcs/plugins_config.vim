@@ -182,3 +182,7 @@ nmap <Leader>f <Plug>(easymotion-overwin-f)
 map  <Leader>/ <Plug>(easymotion-sn)
 omap <Leader>/ <Plug>(easymotion-tn)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-autoformat 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <Leader>l :Autoformat<CR>
