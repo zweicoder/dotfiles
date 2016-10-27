@@ -175,12 +175,12 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1 " Smart casing like Vim
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+map  f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
 
 " Gif config
-map  <Leader>/ <Plug>(easymotion-sn)
-omap <Leader>/ <Plug>(easymotion-tn)
+map  F <Plug>(easymotion-sn)
+omap F <Plug>(easymotion-tn)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-autoformat 

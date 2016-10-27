@@ -22,7 +22,8 @@ autocmd BufEnter * lcd %:p:h
 " ==============================
 " => Visuals
 " ===============================
-set number
+set number " Show line number
+set showcmd " Show currently inputted keystrokes
 nnoremap <silent> <esc><esc> :noh<CR>
 
 " File Folding
@@ -43,3 +44,5 @@ inoremap <C-S-Up> <Esc>:m .-2<CR>==gi
 vnoremap <C-S-Down> :m '>+1<CR>gv=gv
 vnoremap <C-S-Up> :m '<-2<CR>gv=gv
 
+" Map Enter to insert newline without entering insert
+nmap <CR> o<Esc>
