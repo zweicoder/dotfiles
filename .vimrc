@@ -36,7 +36,7 @@ nnoremap <silent> <esc><esc> :noh<CR>
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-h> <C-W> 
 
-" Map Ctrl+Shift+[jk] to move lines
+" Map Ctrl+Shift+[Down/Up] to move lines (ctrl + shift + [jk] has issues)
 nnoremap <C-S-Down> :m .+1<CR>==
 nnoremap <C-S-Up> :m .-2<CR>==
 inoremap <C-S-Down> <Esc>:m .+1<CR>==gi

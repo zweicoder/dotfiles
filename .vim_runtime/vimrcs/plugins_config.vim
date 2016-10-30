@@ -33,8 +33,8 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-nmap <c-P> <Plug>yankstack_substitute_newer_paste
+nmap <c-P> <Plug>yankstack_substitute_older_paste
+nmap <c-N> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
@@ -42,10 +42,10 @@ nmap <c-P> <Plug>yankstack_substitute_newer_paste
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
-
+let g:ctrlp_map = '<c-f>'
+map <leader>j :CtrlPMixed<cr>
+map <c-b> :CtrlPBuffer<cr>
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
@@ -174,9 +174,8 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1 " Smart casing like Vim
-" <Leader>f{char} to move to {char}
 map  f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-overwin-f)
+nmap f <Plug>(easymotion-s)
 
 " Gif config
 map  F <Plug>(easymotion-sn)
