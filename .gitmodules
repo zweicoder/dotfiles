@@ -1,18 +1,15 @@
 [submodule "/home/pewpew/.vim/bundle/vim-easymotion"]
 	path = .vim/bundle/vim-easymotion
-	url = git@github.com:easymotion/vim-easymotion.git
+	url = https://github.com/easymotion/vim-easymotion.git
 [submodule ".vim/bundle/vim-autoformat"]
 	path = .vim/bundle/vim-autoformat
-	url = git@github.com:Chiel92/vim-autoformat.git
+	url = https://github.com/Chiel92/vim-autoformat.git
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
+	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "dotfiles/fonts"]
-	path = dotfiles/fonts
-	url = git@github.com:powerline/fonts.git
 [submodule ".vim/bundle/vim-airline-themes"]
 	path = .vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
