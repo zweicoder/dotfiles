@@ -192,21 +192,6 @@ shopt -s dirspell 2> /dev/null
 # Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2> /dev/null
 
-# This defines where cd looks for targets
-# Add the directories you want to have fast access to, separated by colon
-# Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
-# CDPATH="."
-
-# This allows you to bookmark your favorite places across the file system
-# Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
-# shopt -s cdable_vars
-
-# Examples:
-# export dotfiles="$HOME/dotfiles"
-# export projects="$HOME/projects"
-# export documents="$HOME/Documents"
-# export dropbox="$HOME/Dropbox"
-
 export ideas=~/notebook/private/ideas
 export notebook=~/notebook/private/
 g(){ cd "$1" && ls; }
@@ -223,8 +208,7 @@ open(){ gnome-open "$1"; }
 
 export NVM_DIR="/home/pewpew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-#[[ -s /home/pewpew/.autojump/etc/profile.d/autojump.sh ]] && source /home/pewpew/.autojump/etc/profile.d/autojump.sh
-# Disabled in favor of fasd for now
+
 alias o='a -e xdg-open' # quick opening files with xdg-open
 alias v='f -e vim' # quick opening files with vim
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
@@ -241,8 +225,14 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export PYTHONPATH=~/xgboost/python-package
 
-#[ -f $GOPATH/src/github.com/tokozedg/sman/sman.rc  ] && source $GOPATH/src/github.com/tokozedg/sman/sman.rc
-
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
-[[ $- = *i* ]] && source ~/Applications/liquidprompt/liquidprompt
+#[[ $- = *i* ]] && source ~/Applications/liquidprompt/liquidprompt
 
+# Test out powerline-shell
+function _update_ps1() {
+    PS1="$(~/Applications/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
