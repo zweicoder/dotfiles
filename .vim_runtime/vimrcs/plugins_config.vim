@@ -33,19 +33,17 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
-nmap <c-P> <Plug>yankstack_substitute_older_paste
-nmap <c-N> <Plug>yankstack_substitute_newer_paste
+nmap <c-F> <Plug>yankstack_substitute_older_paste
+nmap <c-B> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
-
-map <c-b> :CtrlPBuffer<cr>
-let g:ctrlp_map = '<c-f>'
+let g:ctrlp_map = '<leader>f'
 map <leader>j :CtrlPMixed<cr>
-map <c-b> :CtrlPBuffer<cr>
+map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
@@ -106,41 +104,6 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme='light'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:lightline = {
-"      \ 'colorscheme': 'wombat',
-"      \ }
-"
-"let g:lightline = {
-"      \ 'colorscheme': 'wombat',
-"      \ 'active': {
-"      \   'left': [ ['mode', 'paste'],
-"      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-"      \   'right': [ [ 'lineinfo' ], ['percent'] ]
-"      \ },
-"      \ 'component': {
-"      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-"      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-"      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-"      \ },
-"      \ 'component_visible_condition': {
-"      \   'readonly': '(&filetype!="help"&& &readonly)',
-"      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-"      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-"      \ },
-"      \ 'separator': { 'left': ' ', 'right': ' ' },
-"      \ 'subseparator': { 'left': ' ', 'right': ' ' }
-"      \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimroom
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:goyo_width=100
-let g:goyo_margin_top = 2
-let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
