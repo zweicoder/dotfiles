@@ -33,8 +33,8 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
-nmap <c-F> <Plug>yankstack_substitute_older_paste
-nmap <c-B> <Plug>yankstack_substitute_newer_paste
+nmap <c-B> <Plug>yankstack_substitute_older_paste
+nmap <c-F> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
