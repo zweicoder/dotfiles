@@ -20,5 +20,4 @@ alias j='fasd_cd -d'     # cd, same functionality as j in autojump
 alias ji='fasd_cd -d -i' # cd with interactive selection
 eval "$(fasd --init auto)"
 alias gs='git status'
-
-
+alias glm='ls -ltd $(git status --porcelain | grep "^.[?M]" | sed "s/^.. //")'
