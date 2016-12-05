@@ -33,6 +33,7 @@ map <leader>o :BufExplorer<cr>
 """"""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
+let g:yankstack_yank_keys = ['y', 'd']
 nmap <c-B> <Plug>yankstack_substitute_older_paste
 nmap <c-F> <Plug>yankstack_substitute_newer_paste
 
@@ -91,8 +92,8 @@ let g:multi_cursor_next_key="\<C-s>"
 " => surround.vim config
 " Annotate strings with gettext http://amix.dk/blog/post/19678
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+" vmap Si S(i_<esc>f)
+" au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
