@@ -4,7 +4,7 @@
 [core]
     autocrlf = input
     excludesfile = ~/.gitignore
-    pager = diff-so-fancy
+    pager = diff-so-fancy | less -F -X
 [push]
     default = simple
 [color "diff"]
