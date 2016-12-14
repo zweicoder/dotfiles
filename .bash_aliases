@@ -22,3 +22,11 @@ eval "$(fasd --init auto)"
 alias gs='git status'
 alias glm='ls -ltd $(git status --porcelain | grep "^.[?M]" | sed "s/^.. //")'
 alias docker_clean_images='docker rmi -f $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_containers='docker rm -v $(docker ps -a -q -f status=exited)'
+alias docker_clean_volumes='docker volume rm $(docker volume ls -qf dangling=true)'
+
+function docker_clean_all() {
+    docker_clean_containers
+    docker_clean_images
+    docker_clean_volumes
+}
