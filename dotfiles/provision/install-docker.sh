@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Install docker on Ubuntu 16.04
 sudo apt-key adv \
