@@ -9,3 +9,5 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc
 sudo apt-get update
 sudo apt-get install -y docker-engine
 sudo usermod -aG docker $USER
+# Login to docker group
+newgrp docker
