@@ -42,7 +42,7 @@ nmap <c-F> <Plug>yankstack_substitute_newer_paste
 " => CTRL-P
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_map = '<leader>f'
+"let g:ctrlp_map = '<leader>f'
 map <leader>j :CtrlPMRU<cr>
 map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_max_height = 20
@@ -148,12 +148,12 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 let g:EasyMotion_smartcase = 1 " Smart casing like Vim
-map  f <Plug>(easymotion-bd-f)
-nmap f <Plug>(easymotion-s)
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-s)
 
 " Gif config
-map  F <Plug>(easymotion-sn)
-omap F <Plug>(easymotion-tn)
+map  <leader>F <Plug>(easymotion-sn)
+omap <leader>F <Plug>(easymotion-tn)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-autoformat 
