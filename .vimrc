@@ -43,7 +43,7 @@ inoremap <C-S-Down> <Esc>:m .+1<CR>==gi
 inoremap <C-S-Up> <Esc>:m .-2<CR>==gi
 vnoremap <C-S-Down> :m '>+1<CR>gv=gv
 vnoremap <C-S-Up> :m '<-2<CR>gv=gv
-imap jk <Esc>
-imap kj <Esc>
+inoremap jk <Esc>
+inoremap kj <Esc>
 " Map Enter to insert newline without entering insert
 nmap <CR> o<Esc>
