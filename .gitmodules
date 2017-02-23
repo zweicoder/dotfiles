@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/vim-gitgutter"]
 	path = .vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "/home/pewpew/.vim/bundle/vimagit"]
+	path = /home/pewpew/.vim/bundle/vimagit
+	url = https://github.com/jreybert/vimagit
