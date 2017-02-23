@@ -24,13 +24,6 @@ map <leader>o :BufExplorer<cr>
 
 
 """"""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-" let MRU_Max_Entries = 400
-" map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
 let g:yankstack_yank_keys = ['y', 'd']
@@ -57,13 +50,6 @@ let g:user_zen_mode='a'
 
 
 """"""""""""""""""""""""""""""
-" => snipMate (beside <TAB> support <CTRL-j>)
-""""""""""""""""""""""""""""""
-"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
-
-
-""""""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
@@ -86,14 +72,6 @@ map <leader>nf :NERDTreeFind<cr>
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:multi_cursor_next_key="\<C-s>"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => surround.vim config
-" Annotate strings with gettext http://amix.dk/blog/post/19678
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vmap Si S(i_<esc>f)
-" au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,6 +137,7 @@ omap <leader>F <Plug>(easymotion-tn)
 " Vim-autoformat 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <Leader>l :Autoformat<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
