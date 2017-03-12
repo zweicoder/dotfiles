@@ -212,9 +212,6 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export PYTHONPATH=~/xgboost/python-package
 
-# Only load Liquid Prompt in interactive shells, not from a script or from scp
-#[[ $- = *i* ]] && source ~/Applications/liquidprompt/liquidprompt
-
 # Test out powerline-shell
 function _update_ps1() {
     PS1="$(~/.powerline-shell.py $? 2> /dev/null)"
@@ -226,3 +223,6 @@ fi
 
 export NVM_DIR="/home/pewpew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Use z (must come after the change in PROMPT_COMMAND for powerline
+. ~/Applications/z/z.sh

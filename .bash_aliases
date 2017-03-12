@@ -15,10 +15,8 @@ activate(){ . "$1/bin/activate";}
 open(){ gnome-open "$1"; }
 
 alias o='a -e xdg-open' # quick opening files with xdg-open
-alias v='f -e vim' # quick opening files with vim
-alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias ji='fasd_cd -d -i' # cd with interactive selection
-eval "$(fasd --init auto)"
+
+alias j='z'
 alias gs='git status'
 alias glm='ls -ltd $(git status --porcelain | grep "^.[?M]" | sed "s/^.. //")'
 alias docker_clean_images='docker rmi -f $(docker images -a --filter=dangling=true -q)'
