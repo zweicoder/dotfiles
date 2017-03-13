@@ -115,13 +115,6 @@ nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=1
-let g:gitgutter_realtime = 1
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  EasyMotion (Autojump)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
