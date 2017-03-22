@@ -135,3 +135,34 @@ noremap <Leader>l :Autoformat<CR>
 " YouCompleteMe 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<ESC>a" : "\<CR>"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UndoTree 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>u :UndotreeToggle<cr>
+if has("persistent_undo")
+    set undodir=~/.undotree/
+    set undofile
+endif
+if !exists('g:undotree_WindowLayout')
+    let g:undotree_WindowLayout = 2
+endif
+if !exists('g:undotree_ShortIndicators')
+    let g:undotree_ShortIndicators = 1
+endif
+if g:undotree_ShortIndicators == 1
+    let s:timeSecond  = '1 s ago'
+    let s:timeSeconds = ' s ago'
+
+    let s:timeMinute  = '1 m ago'
+    let s:timeMinutes = ' m ago'
+
+    let s:timeHour  = '1 h ago'
+    let s:timeHours = ' h ago'
+
+    let s:timeDay  = '1 d ago'
+    let s:timeDays = ' d ago'
+
+    let s:timeOriginal = 'Original'
+endif
