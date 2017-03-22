@@ -66,5 +66,6 @@ noremap E $
 nnoremap gV `[v`]
 " Map Enter to insert newline without entering insert
 nmap <CR> o<Esc>
-" save session - reopen these set of windows with `vim -S`
-nnoremap <leader>s :mksession<CR>
+" save session - reopen these set of windows with `vim -S ~/.vim_session`
+" if used extensively consider doing stuff like $PWD/.vim_session
+nnoremap <leader>s :mksession! ~/.vim_session<CR>
