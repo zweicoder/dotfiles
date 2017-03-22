@@ -22,7 +22,18 @@ autocmd BufEnter * lcd %:p:h
 " ==============================
 " => Visuals
 " ===============================
-set number " Show line number
+set relativenumber " Show relative line numbers - much more helpful
+
+" toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
 set showcmd " Show currently inputted keystrokes
 nnoremap <silent> <esc><esc> :noh<CR>
 
@@ -45,5 +56,15 @@ vnoremap <C-S-Down> :m '>+1<CR>gv=gv
 vnoremap <C-S-Up> :m '<-2<CR>gv=gv
 inoremap jk <Esc>
 inoremap kj <Esc>
+" Prevents us from moving irregularly for soft-wrapped lines
+nnoremap j gj
+nnoremap k gk
+" move to beginning/end of line
+noremap B ^
+noremap E $
+" highlight last inserted text
+nnoremap gV `[v`]
 " Map Enter to insert newline without entering insert
 nmap <CR> o<Esc>
+" save session - reopen these set of windows with `vim -S`
+nnoremap <leader>s :mksession<CR>
