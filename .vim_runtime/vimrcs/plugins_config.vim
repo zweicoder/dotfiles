@@ -170,3 +170,9 @@ if g:undotree_ShortIndicators == 1
 
     let s:timeOriginal = 'Original'
 endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-jsx 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0 " Allow jsx in .js files
