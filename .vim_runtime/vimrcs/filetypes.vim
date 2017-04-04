@@ -52,6 +52,13 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 
 """"""""""""""""""""""""""""""
+" => Dockerfile section
+"""""""""""""""""""""""""""""""
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
+au BufRead,BufNewFile Dockerfile.* set filetype=dockerfile
+au BufRead,BufNewFile *.Dockerfile set filetype=dockerfile
+
+""""""""""""""""""""""""""""""
 " => CoffeeScript section
 """""""""""""""""""""""""""""""
 function! CoffeeScriptFold()
