@@ -28,3 +28,5 @@ function docker_clean_all() {
     docker_clean_images
     docker_clean_volumes
 }
+
+alias x='pet exec'
