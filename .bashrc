@@ -212,7 +212,7 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export PYTHONPATH=~/xgboost/python-package
 
-# Test out powerline-shell
+# Remember to install powerline-fonts and then change the terminal font to Source Code Pro Semibold size 11
 function _update_ps1() {
     PS1="$(~/.powerline-shell.py $? 2> /dev/null)"
 }
@@ -225,4 +225,4 @@ export NVM_DIR="/home/pewpew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Use z (must come after the change in PROMPT_COMMAND for powerline
-. ~/Applications/z/z.sh
+. ~/bin/z.sh
