@@ -96,13 +96,37 @@ let g:go_fmt_command = "goimports"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim-jsx 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 1 " Allow jsx in .js files
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 let g:syntastic_python_checkers=['pyflakes']
 
 " Javascript
-let g:syntastic_javascript_checkers = ['jshint']
+function! SyntasticESlintChecker()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+
+  if executable('npm')
+      let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+
+  let b:syntastic_javascript_eslint_exec = l:eslint
+endfunction
+
+
+let g:syntastic_javascript_checkers = ["eslint"]
+
+autocmd FileType javascript :call SyntasticESlintChecker()
 
 " Go
 let g:syntastic_auto_loc_list = 1
@@ -139,6 +163,7 @@ noremap <Leader>l :Autoformat<CR>
 " YouCompleteMe 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<ESC>a" : "\<CR>"
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,7 +197,3 @@ if g:undotree_ShortIndicators == 1
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim-jsx 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jsx_ext_required = 0 " Allow jsx in .js files

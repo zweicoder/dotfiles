@@ -51,6 +51,11 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 
+au FileType javascript.jsx call JavaScriptFold()
+au FileType javascript.jsx setl fen
+au FileType javascript.jsx setl nocindent
+autocmd Filetype javascript.jsx setlocal ts=2 sts=2 sw=2
+
 """"""""""""""""""""""""""""""
 " => Dockerfile section
 """""""""""""""""""""""""""""""
