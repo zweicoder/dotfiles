@@ -18,6 +18,8 @@ alias o='a -e xdg-open' # quick opening files with xdg-open
 
 alias j='z'
 alias gs='git status'
+alias gds='git diff --staged'
+alias gd='git diff'
 alias glm='ls -ltd $(git status --porcelain | grep "^.[?M]" | sed "s/^.. //")'
 alias docker_clean_images='docker rmi -f $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_containers='docker rm -v $(docker ps -a -q -f status=exited)'
