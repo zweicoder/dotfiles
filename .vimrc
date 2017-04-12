@@ -23,6 +23,7 @@ autocmd BufEnter * lcd %:p:h
 " => Visuals
 " ===============================
 set relativenumber " Show relative line numbers - much more helpful
+set number " Hybrid mode that also shows current line number
 
 " toggle between number and relativenumber
 function! ToggleNumber()
@@ -57,8 +58,8 @@ vnoremap <C-S-Up> :m '<-2<CR>gv=gv
 inoremap jk <Esc>
 inoremap kj <Esc>
 " Prevents us from moving irregularly for soft-wrapped lines
-nnoremap j gj
-nnoremap k gk
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 " move to beginning/end of line
 noremap B ^
 noremap E $
