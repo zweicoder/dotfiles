@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/vim-jsx"]
 	path = .vim/bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule ".vim/bundle/vim-winresizer"]
+	path = .vim/bundle/vim-winresizer
+	url = https://github.com/simeji/winresizer.git
