@@ -38,7 +38,7 @@
     "space_after_anon_function": true,
     "space_before_conditional": true,
     "space_in_empty_paren": false,
-    "space_in_paren": true,
+    "space_in_paren": false,
     "unescape_strings": false,
     "wrap_line_length": 120
   }
