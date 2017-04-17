@@ -205,3 +205,8 @@ if executable('ag')
 endif
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+
+
+let g:rooter_patterns = ['Rakefile', '.git/']
+let g:rooter_silent_chdir = 1
+let g:rooter_use_lcd = 1
