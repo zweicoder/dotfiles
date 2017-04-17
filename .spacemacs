@@ -316,7 +316,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; (require 'golden-ratio)
+;; orgmodeee
+  (with-eval-after-load 'org
+    (setq org-agenda-files (list "~/Dropbox/org/agendas.org" ))
+    )
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (setq org-agenda-files (append org-agenda-files (org-projectile:todo-files)))
+    )
+
   (golden-ratio-mode t)
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
@@ -380,6 +388,7 @@ project root). Excludes the file basename. See `*buffer-name' for that."
  '(evil-escape-key-sequence "fd")
  '(evil-want-Y-yank-to-eol nil)
  '(line-number-mode nil)
+ '(org-directory "~/Dropbox/org")
  '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
