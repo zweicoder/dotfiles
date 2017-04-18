@@ -42,9 +42,9 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_regexp = 1
 " let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee\|\*build'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|.DS_Store|*build)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+            \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|.DS_Store|*build)$',
+            \ 'file': '\v\.(exe|so|dll)$',
+            \ }
 
 """"""""""""""""""""""""""""""
 " => ZenCoding
@@ -83,7 +83,7 @@ let g:multi_cursor_next_key="\<C-s>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_theme='light'
@@ -96,7 +96,7 @@ let g:go_fmt_command = "goimports"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim-jsx 
+" Vim-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:jsx_ext_required = 1 " Allow jsx in .js files
 
@@ -109,18 +109,18 @@ let g:syntastic_python_checkers=['pyflakes']
 
 " Javascript
 function! SyntasticESlintChecker()
-  let l:npm_bin = ''
-  let l:eslint = 'eslint'
+    let l:npm_bin = ''
+    let l:eslint = 'eslint'
 
-  if executable('npm')
-      let l:npm_bin = split(system('npm bin'), '\n')[0]
-  endif
+    if executable('npm')
+        let l:npm_bin = split(system('npm bin'), '\n')[0]
+    endif
 
-  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
-    let l:eslint = l:npm_bin . '/eslint'
-  endif
+    if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+        let l:eslint = l:npm_bin . '/eslint'
+    endif
 
-  let b:syntastic_javascript_eslint_exec = l:eslint
+    let b:syntastic_javascript_eslint_exec = l:eslint
 endfunction
 
 
@@ -155,19 +155,19 @@ map  <leader>F <Plug>(easymotion-sn)
 omap <leader>F <Plug>(easymotion-tn)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim-autoformat 
+" Vim-autoformat
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 noremap <Leader>l :Autoformat<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YouCompleteMe 
+" YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <expr> <CR> pumvisible() ? "\<C-Y>\<ESC>a" : "\<CR>"
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UndoTree 
+" UndoTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>u :UndotreeToggle<cr>
 if has("persistent_undo")
@@ -197,3 +197,16 @@ if g:undotree_ShortIndicators == 1
 endif
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+
+let g:rooter_patterns = ['Rakefile', '.git/']
+let g:rooter_silent_chdir = 1
+let g:rooter_use_lcd = 1

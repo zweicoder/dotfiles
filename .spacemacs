@@ -53,13 +53,13 @@ values."
      spell-checking
      syntax-checking
      version-control
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     (colors )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(helm-ext)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -88,7 +88,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -274,7 +274,7 @@ values."
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis t
+   dotspacemacs-smart-closing-parenthesis nil
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -337,7 +337,41 @@ you should place your code here."
   (define-key evil-operator-state-map "k" 'evil-previous-line)
   (define-key evil-normal-state-map "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
+  ;; Shamelessly stolen from glen
+  (setq-default
+   lisp-indent-offset 2
+   ;; json-mode
+   json-encoding-default-indentation 2
+   ;; js2-mode
+   js-indent-level 2
+   js-curly-indent-offset 1
+   js2-basic-offset 2
+   react-mode-offset 4
+   ;; typescript mode
+   typescript-expr-indent-offset 2
+   typescript-indent-level 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 4
+   web-mode-css-indent-offset 4
+   web-mode-code-indent-offset 4
+   web-mode-attr-indent-offset 4
+   )
+  ;; js editing configurations
+  ;; -----------------
+  ;; use local eslint
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                   (or (buffer-file-name) default-directory)
+                   "node_modules"))
+            (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                        root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+  
   ;; Customize spaceline
+  ;; -------------------
   (spaceline-toggle-buffer-size-off)
   (defun doom-ml-project-root (&optional strict-p)
     "Get the path to the root of your project."
@@ -373,6 +407,24 @@ project root). Excludes the file basename. See `*buffer-name' for that."
     )
   ;; TODO find out how to put this on the left side without redefining the whole theme
   (spaceline-spacemacs-theme 'pwd-segment)
+
+  ;; Configure Helm
+  ;; -----------------------
+  ;; Use helm-ext which enables split actions and other stuff
+
+  (with-eval-after-load 'helm
+    (helm-ext-ff-enable-split-actions t)
+    (helm-ext-ff-enable-skipping-dots t)
+    )
+  (with-eval-after-load 'helm-ag
+    (add-to-list 'helm-ag--actions
+      helm-ext-ff--horizontal-split-action t)
+    (add-to-list 'helm-ag--actions
+      helm-ext-ff--vertical-split-action t)
+    (define-key helm-ag-map
+      (kbd helm-ext-ff-horizontal-split-key) #'helm-ext-ff-execute-horizontal-split)
+    (define-key helm-ag-map
+      (kbd helm-ext-ff-vertical-split-key) #'helm-ext-ff-execute-vertical-split))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -382,11 +434,20 @@ project root). Excludes the file basename. See `*buffer-name' for that."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
+  '(ansi-color-faces-vector
+     [default default default italic underline success warning error])
  '(evil-cross-lines t)
  '(evil-escape-key-sequence "fd")
  '(evil-want-Y-yank-to-eol nil)
+  '(helm-projectile-grep-or-ack-actions
+     (quote
+       ("Find file" helm-grep-action "Find file other frame" helm-grep-other-frame
+         (lambda nil
+           (and
+             (locate-library "elscreen")
+             "Find file in Elscreen"))
+         helm-grep-jump-elscreen "Save results in grep buffer" helm-grep-save-results "Find file other window" helm-grep-other-window "something" helm-grep-other-window)))
+ '(js-indent-level 2 t)
  '(line-number-mode nil)
  '(org-directory "~/Dropbox/org")
  '(paradox-github-token t))

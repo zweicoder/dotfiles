@@ -31,7 +31,7 @@
     "indent_char": " ",
     "indent_level": 0,
     "jslint_happy": false,
-    "keep_array_indentation": false,
+    "keep_array_indentation": true,
     "keep_function_indentation": false,
     "max_preserve_newlines": 0,
     "preserve_newlines": true,
