@@ -59,7 +59,10 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ext)
+    dotspacemacs-additional-packages '(
+                                        helm-ext
+                                        (prettier-js :location (recipe :fetcher url :url "https://gist.githubusercontent.com/troglotit/48da99263b0f4f1f24edf8e0db797027/raw/92a367cdd9f547634c050907cd9c1a5485cc0048/prettier-js.el"))
+                                        )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -337,6 +340,16 @@ you should place your code here."
   (define-key evil-operator-state-map "k" 'evil-previous-line)
   (define-key evil-normal-state-map "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
+  ;; Prettier
+  ;; prettier hook
+  (setq prettier-args '(
+                         "--trailing-comma" "es5"
+                         "--bracket-spacing" "true"
+                         "--single quote" "true"
+                         ))
+  (add-hook 'js2-mode-hook
+    #'(lambda ()
+        (add-hook 'before-save-hook 'prettier-before-save nil t)))
   ;; Shamelessly stolen from glen
   (setq-default
    lisp-indent-offset 2
