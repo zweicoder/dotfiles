@@ -53,7 +53,7 @@ values."
      spell-checking
      syntax-checking
      version-control
-     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     (colors )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -399,6 +399,24 @@ project root). Excludes the file basename. See `*buffer-name' for that."
     )
   ;; TODO find out how to put this on the left side without redefining the whole theme
   (spaceline-spacemacs-theme 'pwd-segment)
+
+  ;; Configure Helm
+  ;; -----------------------
+  ;; Use helm-ext which enables split actions and other stuff
+
+  (with-eval-after-load 'helm
+    (helm-ext-ff-enable-split-actions t)
+    (helm-ext-ff-enable-skipping-dots t)
+    )
+  (with-eval-after-load 'helm-ag
+    (add-to-list 'helm-ag--actions
+      helm-ext-ff--horizontal-split-action t)
+    (add-to-list 'helm-ag--actions
+      helm-ext-ff--vertical-split-action t)
+    (define-key helm-ag-map
+      (kbd helm-ext-ff-horizontal-split-key) #'helm-ext-ff-execute-horizontal-split)
+    (define-key helm-ag-map
+      (kbd helm-ext-ff-vertical-split-key) #'helm-ext-ff-execute-vertical-split))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
