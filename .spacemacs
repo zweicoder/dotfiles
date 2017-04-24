@@ -381,11 +381,11 @@ you should place your code here."
   (setq prettier-args '(
                          "--trailing-comma" "es5"
                          "--bracket-spacing" "true"
-                         "--single quote" "true"
+                         "--single-quote" "true"
                          ))
-  (add-hook 'js2-mode-hook
-    #'(lambda ()
-        (add-hook 'before-save-hook 'prettier-before-save nil t)))
+  ;; (add-hook 'js2-mode-hook
+  ;;   #'(lambda ()
+  ;;       (add-hook 'before-save-hook 'prettier-before-save nil t)))
   ;; Shamelessly stolen from glen
   (setq-default
    lisp-indent-offset 2
