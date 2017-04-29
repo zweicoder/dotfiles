@@ -335,9 +335,10 @@ you should place your code here."
   ;; Remap j k for better navigation in wrapped lines
   (define-key evil-normal-state-map "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
+  ;; Also in visual mode
+  ;; (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  ;; (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-  ;; (evil-define-minor-mode-key 'motion 'visual-line-mode "j" 'evil-next-visual-line)
-  ;; (evil-define-minor-mode-key 'motion 'visual-line-mode "k" 'evil-previous-visual-line)
 
   ;; (evil-define-motion my-evil-next-line (count)
   ;;   (interactive "P")
