@@ -321,14 +321,18 @@ you should place your code here."
   (golden-ratio-mode t)
   (evil-define-motion my-evil-next-line (count)
     (interactive "P")
-    (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
+    ;; (message (number-to-string (prefix-numeric-value count) ))
+    (let ((command (if count 'evil-next-line 'evil-next-line)))
+      (message (symbol-name command))
       (funcall command (prefix-numeric-value count))))
 
   (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
 
   (evil-define-motion my-evil-previous-line (count)
     (interactive "P")
+    ;; (message (number-to-string (prefix-numeric-value count) ))
     (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
+      (message (symbol-name command))
       (funcall command (prefix-numeric-value count))))
 
   (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
