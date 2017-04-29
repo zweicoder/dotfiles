@@ -318,172 +318,19 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; orgmodeee
-  (with-eval-after-load 'org
-    (setq org-agenda-files (list "~/Dropbox/org/agendas.org" ))
-    )
-  (with-eval-after-load 'org-agenda
-    (require 'org-projectile)
-    (setq org-agenda-files (append org-agenda-files (org-projectile:todo-files)))
-    )
-
   (golden-ratio-mode t)
-  (define-key evil-normal-state-map "E" 'evil-end-of-line)
-  (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
-  (define-key evil-motion-state-map "E" 'evil-end-of-line)
-  (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
-  ;; Remap j k for better navigation in wrapped lines
-  (define-key evil-normal-state-map "j" 'evil-next-visual-line)
-  (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
-
-  ;; (evil-define-minor-mode-key 'motion 'visual-line-mode "j" 'evil-next-visual-line)
-  ;; (evil-define-minor-mode-key 'motion 'visual-line-mode "k" 'evil-previous-visual-line)
-
-  ;; (evil-define-motion my-evil-next-line (count)
-  ;;   (interactive "P")
-  ;;   (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
-  ;;     (setq count (prefix-numeric-value count))
-  ;;     (funcall command count)))
-  ;; (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
-  ;; (evil-define-motion my-evil-previous-line (count)
-  ;;   (interactive "P")
-  ;;   (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
-  ;;     (setq count (prefix-numeric-value count))
-  ;;     (funcall command count)))
-  ;; (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
-  ;; Make ctrl backspace work like normal people
-  (defun aborn/backward-kill-word ()
-    "Customize/Smart backward-kill-word."
-    (interactive)
-    (let* ((cp (point))
-            (backword)
-            (end)
-            (space-pos)
-            (backword-char (if (bobp)
-                             ""           ;; cursor in begin of buffer
-                             (buffer-substring cp (- cp 1)))))
-      (if (equal (length backword-char) (string-width backword-char))
-        (progn
-          (save-excursion
-            (setq backword (buffer-substring (point) (progn (forward-word -1) (point)))))
-          (setq ab/debug backword)
-          (save-excursion
-            (when (and backword          ;; when backword contains space
-                    (s-contains? " " backword))
-              (setq space-pos (ignore-errors (search-backward " ")))))
-          (save-excursion
-            (let* ((pos (ignore-errors (search-backward-regexp "\n")))
-                    (substr (when pos (buffer-substring pos cp))))
-              (when (or (and substr (s-blank? (s-trim substr)))
-                      (s-contains? "\n" backword))
-                (setq end pos))))
-          (if end
-            (kill-region cp end)
-            (if space-pos
-              (kill-region cp space-pos)
-              (backward-kill-word 1))))
-        (kill-region cp (- cp 1)))         ;; word is non-english word
-      ))
-
-  (global-set-key  [C-backspace]
-    'aborn/backward-kill-word)
-  ;; Prettier
-  ;; prettier hook
-  (setq prettier-args '(
-                         "--trailing-comma" "es5"
-                         "--bracket-spacing" "true"
-                         "--single-quote" "true"
-                         ))
-  ;; (add-hook 'js2-mode-hook
-  ;;   #'(lambda ()
-  ;;       (add-hook 'before-save-hook 'prettier-before-save nil t)))
-  ;; Shamelessly stolen from glen
-  (setq-default
-    lisp-indent-offset 2
-    ;; json-mode
-    json-encoding-default-indentation 2
-    ;; js2-mode
-    js-indent-level 2
-    js-curly-indent-offset 1
-    js2-basic-offset 2
-    react-mode-offset 4
-    ;; typescript mode
-    typescript-expr-indent-offset 2
-    typescript-indent-level 2
-    ;; web-mode
-    css-indent-offset 2
-    web-mode-markup-indent-offset 4
-    web-mode-css-indent-offset 4
-    web-mode-code-indent-offset 4
-    web-mode-attr-indent-offset 4
-    )
-  ;; js editing configurations
-  ;; -----------------
-  ;; use local eslint
-  (defun my/use-eslint-from-node-modules ()
-    (let* ((root (locate-dominating-file
-                   (or (buffer-file-name) default-directory)
-                   "node_modules"))
-            (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                        root))))
-      (when (and eslint (file-executable-p eslint))
-        (setq-local flycheck-javascript-eslint-executable eslint))))
-  ;; Customize spaceline
-  ;; -------------------
-  (spaceline-toggle-buffer-size-off)
-  (defun doom-ml-project-root (&optional strict-p)
-    "Get the path to the root of your project."
-    (let (projectile-require-project-root strict-p)
-      (projectile-project-root)))
-  (defun buffer-path ()
-    "Displays the buffer's full path relative to the project root (includes the
-project root). Excludes the file basename. See `*buffer-name' for that."
-    (when buffer-file-name
-      (propertize
-        (f-dirname
-          (let ((buffer-path (file-relative-name buffer-file-name (doom-ml-project-root)))
-                 (max-length (truncate (/ (window-body-width) 1.75))))
-            (concat (projectile-project-name) "/"
-              (if (> (length buffer-path) max-length)
-                (let ((path (reverse (split-string buffer-path "/" t)))
-                       (output ""))
-                  (when (and path (equal "" (car path)))
-                    (setq path (cdr path)))
-                  (while (and path (<= (length output) (- max-length 4)))
-                    (setq output (concat (car path) "/" output))
-                    (setq path (cdr path)))
-                  (when path
-                    (setq output (concat "../" output)))
-                  (when (string-suffix-p "/" output)
-                    (setq output (substring output 0 -1)))
-                  output)
-                buffer-path))))
-        'face (if active 'mode-line-2))))
-
-  (spaceline-define-segment pwd-segment
-    (buffer-path)
-    )
-  ;; TODO find out how to put this on the left side without redefining the whole theme
-  (spaceline-spacemacs-theme 'pwd-segment)
-
-  ;; Configure Helm
-  ;; -----------------------
-  ;; Use helm-ext which enables split actions and other stuff
-
-  (with-eval-after-load 'helm
-    (helm-ext-ff-enable-split-actions t)
-    (helm-ext-ff-enable-skipping-dots t)
-    )
-  (with-eval-after-load 'helm-ag
-    (add-to-list 'helm-ag--actions
-      helm-ext-ff--horizontal-split-action t)
-    (add-to-list 'helm-ag--actions
-      helm-ext-ff--vertical-split-action t)
-    (define-key helm-ag-map
-      (kbd helm-ext-ff-horizontal-split-key) #'helm-ext-ff-execute-horizontal-split)
-    (define-key helm-ag-map
-      (kbd helm-ext-ff-vertical-split-key) #'helm-ext-ff-execute-vertical-split))
+  (evil-define-motion my-evil-next-line (count)
+    (interactive "P")
+    (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
+      (setq count (prefix-numeric-value count))
+      (funcall command count)))
+  (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
+  (evil-define-motion my-evil-previous-line (count)
+    (interactive "P")
+    (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
+      (setq count (prefix-numeric-value count))
+      (funcall command count)))
+  (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
