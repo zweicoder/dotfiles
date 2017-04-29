@@ -336,22 +336,23 @@ you should place your code here."
   (define-key evil-normal-state-map "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
   ;; Also in visual mode
-  ;; (define-key evil-visual-state-map "j" 'evil-next-visual-line)
-  ;; (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
+  (evil-define-motion my-evil-next-line (count)
+    :type line
+    (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
+      (funcall command (prefix-numeric-value count))))
 
-  ;; (evil-define-motion my-evil-next-line (count)
-  ;;   (interactive "P")
-  ;;   (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
-  ;;     (setq count (prefix-numeric-value count))
-  ;;     (funcall command count)))
-  ;; (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
-  ;; (evil-define-motion my-evil-previous-line (count)
-  ;;   (interactive "P")
-  ;;   (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
-  ;;     (setq count (prefix-numeric-value count))
-  ;;     (funcall command count)))
-  ;; (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
+  (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
+
+  (evil-define-motion my-evil-previous-line (count)
+    :type line
+    (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
+      (funcall command (prefix-numeric-value count))))
+
+  (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
+
   ;; Make ctrl backspace work like normal people
   (defun aborn/backward-kill-word ()
     "Customize/Smart backward-kill-word."
