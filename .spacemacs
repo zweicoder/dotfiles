@@ -322,15 +322,17 @@ you should place your code here."
   (evil-define-motion my-evil-next-line (count)
     (interactive "P")
     (let ((command (if count 'evil-next-line 'evil-next-visual-line)))
-      (setq count (prefix-numeric-value count))
-      (funcall command count)))
+      (funcall command (prefix-numeric-value count))))
+
   (define-key evil-motion-state-map (kbd "j") 'my-evil-next-line)
+
   (evil-define-motion my-evil-previous-line (count)
     (interactive "P")
     (let ((command (if count 'evil-previous-line 'evil-previous-visual-line)))
-      (setq count (prefix-numeric-value count))
-      (funcall command count)))
+      (funcall command (prefix-numeric-value count))))
+
   (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
