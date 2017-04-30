@@ -33,4 +33,5 @@ function docker_clean_all() {
 
 alias x='pet exec'
 alias prettify='prettier --single-quote --bracket-spacing true --trailing-comma es5 --write'
-
+alias em='emacs -nw'
+alias sm='emacs &'
