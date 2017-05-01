@@ -47,3 +47,4 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " move to beginning/end of line
 noremap B ^
 noremap E $
+:set smartcase
