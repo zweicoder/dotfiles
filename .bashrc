@@ -225,4 +225,8 @@ export NVM_DIR="/home/pewpew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Use z (must come after the change in PROMPT_COMMAND for powerline
-. ~/bin/z.sh
+[[ -s ~/bin/z.sh ]] && . ~/bin/z.sh
+
+# tmuxinator
+[[ -s ~/bin/tmuxinator.bash ]] && . ~/bin/tmuxinator.bash
+
