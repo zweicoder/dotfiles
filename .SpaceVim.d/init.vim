@@ -47,4 +47,16 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 " move to beginning/end of line
 noremap B ^
 noremap E $
+:set ignorecase
 :set smartcase
+:set incsearch
+
+" If you want to add some custom plugins, use these options:
+let g:spacevim_custom_plugins = [
+            \['easymotion/vim-easymotion']
+    \ ]
+let g:spacevim_guifont = 'Source\ Code\ Pro\ for\ Powerline'
+map  <leader>j <Plug>(easymotion-bd-f)
+nmap <leader>j <Plug>(easymotion-s)
+map  <leader>J <Plug>(easymotion-sn)
+omap <leader>J <Plug>(easymotion-tn)
