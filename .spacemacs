@@ -32,6 +32,7 @@ values."
     dotspacemacs-configuration-layers
     '(
       yaml
+       typescript
        html
        javascript
        python
@@ -54,12 +55,13 @@ values."
        spell-checking
        syntax-checking
        version-control
-       (colors )
-       )
-    ;; List of additional packages that will be installed without being
-    ;; wrapped in a layer. If you need some configuration for these
-    ;; packages, then consider creating a layer. You can also put the
-    ;; configuration in `dotspacemacs/user-config'.
+       spacemacs-prettier ;;https://github.com/praveenperera/spacemacs-prettier
+       colors
+     )
+   ;; List of additional packages that will be installed without being
+   ;; wrapped in a layer. If you need some configuration for these
+   ;; packages, then consider creating a layer. You can also put the
+   ;; configuration in `dotspacemacs/user-config'.
     dotspacemacs-additional-packages '(
                                         helm-ext
                                         )
@@ -329,13 +331,20 @@ you should place your code here."
     )
 
   (golden-ratio-mode t)
+  (with-eval-after-load "golden-ratio"
+    '(progn
+       (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
+       (add-to-list 'golden-ratio-inhibit-functions 'pl/ediff-comparison-buffer-p)))
+
+  (defun pl/ediff-comparison-buffer-p ()
+    (and (boundp 'ediff-this-buffer-ediff-sessions)
+      ediff-this-buffer-ediff-sessions))
+
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
   (define-key evil-motion-state-map "E" 'evil-end-of-line)
   (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
   ;; Remap j k for better navigation in wrapped lines
-  (define-key evil-normal-state-map "j" 'evil-next-visual-line)
-  (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
@@ -397,6 +406,10 @@ you should place your code here."
                          "--bracket-spacing" "true"
                          "--single-quote" "true"
                          ))
+  (require 'prettier-js)
+  (setq prettier-target-mode "js2-mode")
+  (remove-hook 'before-save-hook 'prettier-before-save t
+    )
   ;; (add-hook 'js2-mode-hook
   ;;   #'(lambda ()
   ;;       (add-hook 'before-save-hook 'prettier-before-save nil t)))
@@ -498,9 +511,14 @@ project root). Excludes the file basename. See `*buffer-name' for that."
   ;; If there is more than one, they won't work right.
   '(ansi-color-faces-vector
      [default default default italic underline success warning error])
-  '(evil-cross-lines t)
-  '(evil-escape-key-sequence "fd")
-  '(evil-want-Y-yank-to-eol nil)
+ '(evil-cross-lines t)
+ '(evil-escape-key-sequence "fd")
+ '(evil-want-Y-yank-to-eol nil)
+ '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
+  '(golden-ratio-exclude-modes
+     (quote
+       ("speedbar-mode" "gdb-memory-mode" "gdb-disassembly-mode" "gdb-inferior-io-mode" "gdb-frames-mode" "gdb-threads-mode" "gdb-breakpoints-mode" "gdb-registers-mode" "gdb-locals-mode" "gud-mode" "dired-mode" "ediff-mode" "calc-mode" "bs-mode")))
+ '(golden-ratio-mode t)
   '(helm-projectile-grep-or-ack-actions
      (quote
        ("Find file" helm-grep-action "Find file other frame" helm-grep-other-frame
