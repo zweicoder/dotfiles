@@ -27,7 +27,7 @@ endif
   \  'syntax-checking'
   \]
 
-  let g:dotspacevim_additional_plugins = ['morhetz/gruvbox']
+  let g:dotspacevim_additional_plugins = ['morhetz/gruvbox', 'pangloss/vim-javascript']
   " You can also pass vim plug options like this: [{ 'name': 'Valloric/YouCompleteMe', 'option': {'do': './install.py'}}]
 
   let g:dotspacevim_excluded_plugins = []
@@ -120,13 +120,14 @@ endfunction
 call s:spacevim_bind_plug('nmap', 'j', 'easymotion-bd-f', '(easymotion-bd-f)')
 call s:spacevim_bind_plug('map', 'J', 'easymotion-sn', '(easymotion-sn)')
 call s:spacevim_bind_plug('omap', 'J', 'easymotion-tn', '(easymotion-tn)')
-" Gif config
-" map  / <Plug>(easymotion-sn)
-" omap / <Plug>(easymotion-tn)
 
-" " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" " Without these mappings, `n` & `N` works fine. (These mappings just provide
-" " different highlight method and have some other features )
-" map  n <Plug>(easymotion-next)
-" map  N <Plug>(easymotion-prev)
+" ==============================
+" => Language specific Settings
+" ===============================
+set smarttab
+set cindent
+filetype plugin indent on
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html       setlocal shiftwidth=2 tabstop=2
+autocmd FileType python     setlocal shiftwidth=4 softtabstop=4 expandtab
 " }}}
