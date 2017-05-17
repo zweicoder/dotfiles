@@ -275,7 +275,7 @@ values."
     dotspacemacs-folding-method 'evil
     ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
     ;; (default nil)
-    dotspacemacs-smartparens-strict-mode t
+    dotspacemacs-smartparens-strict-mode nil
     ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
     ;; over any automatically added closing parenthesis, bracket, quote, etc…
     ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
@@ -335,6 +335,13 @@ you should place your code here."
     '(progn
        (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
        (add-to-list 'golden-ratio-inhibit-functions 'pl/ediff-comparison-buffer-p)))
+  (add-hook 'ediff-startup-hook 'my-ediff-startup-hook)
+
+  (defun my-ediff-startup-hook ()
+    "Workaround to balance the ediff windows when golden-ratio is enabled."
+    ;; There's probably a better way to do it.
+    (ediff-toggle-split)
+    (ediff-toggle-split))
 
   (defun pl/ediff-comparison-buffer-p ()
     (and (boundp 'ediff-this-buffer-ediff-sessions)
