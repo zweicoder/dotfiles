@@ -32,3 +32,7 @@ sudo add-apt-repository \
 #    stable"
 
 sudo apt-get update && sudo apt-get install docker-ce
+
+# Create docker group and login
+sudo usermod -aG docker $USER
+newgrp docker
