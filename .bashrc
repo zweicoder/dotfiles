@@ -221,7 +221,7 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
-export NVM_DIR="/home/pewpew/.nvm"
+export NVM_DIR="/home/`whoami`/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Use z (must come after the change in PROMPT_COMMAND for powerline
