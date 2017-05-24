@@ -49,6 +49,7 @@ values."
        git
        markdown
        org
+       c-c++
        (shell :variables
          shell-default-height 30
          shell-default-position 'bottom)
@@ -64,6 +65,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
     dotspacemacs-additional-packages '(
                                         helm-ext
+                                        ac-etags
                                         )
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()

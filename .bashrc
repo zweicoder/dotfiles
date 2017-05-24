@@ -15,16 +15,6 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
-
-# Ignore certain commands from being added to history
-HISTIGNORE='ls:bg:fg:history'
-
-# Store history immediately
-PROMPT_COMMAND='history -a'
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -155,9 +145,6 @@ bind "set completion-map-case on"
 bind "set show-all-if-ambiguous on"
 
 ## SANE HISTORY DEFAULTS ##
-
-# Append to the history file, don't overwrite it
-shopt -s histappend
 
 # Save multi-line commands as one command
 shopt -s cmdhist
