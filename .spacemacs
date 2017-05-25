@@ -66,6 +66,7 @@ values."
     dotspacemacs-additional-packages '(
                                         helm-ext
                                         ac-etags
+                                      dockerfile-mode
                                         )
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()
@@ -89,79 +90,79 @@ values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
-    ;; possible. Set it to nil if you have no way to use HTTPS in your
-    ;; environment, otherwise it is strongly recommended to let it set to t.
-    ;; This variable has no effect if Emacs is launched with the parameter
-    ;; `--insecure' which forces the value of this variable to nil.
-    ;; (default t)
-    dotspacemacs-elpa-https nil
-    ;; Maximum allowed time in seconds to contact an ELPA repository.
-    dotspacemacs-elpa-timeout 5
-    ;; If non nil then spacemacs will check for updates at startup
-    ;; when the current branch is not `develop'. Note that checking for
-    ;; new versions works via git commands, thus it calls GitHub services
-    ;; whenever you start Emacs. (default nil)
-    dotspacemacs-check-for-update nil
-    ;; If non-nil, a form that evaluates to a package directory. For example, to
-    ;; use different package directories for different Emacs versions, set this
-    ;; to `emacs-version'.
-    dotspacemacs-elpa-subdirectory nil
-    ;; One of `vim', `emacs' or `hybrid'.
-    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
-    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
-    ;; with `:variables' keyword (similar to layers). Check the editing styles
-    ;; section of the documentation for details on available variables.
-    ;; (default 'vim)
-    dotspacemacs-editing-style 'vim
-    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
-    dotspacemacs-verbose-loading nil
-    ;; Specify the startup banner. Default value is `official', it displays
-    ;; the official spacemacs logo. An integer value is the index of text
-    ;; banner, `random' chooses a random text banner in `core/banners'
-    ;; directory. A string value must be a path to an image format supported
-    ;; by your Emacs build.
-    ;; If the value is nil then no banner is displayed. (default 'official)
-    dotspacemacs-startup-banner 'official
-    ;; List of items to show in startup buffer or an association list of
-    ;; the form `(list-type . list-size)`. If nil then it is disabled.
-    ;; Possible values for list-type are:
-    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
-    ;; List sizes may be nil, in which case
-    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-    dotspacemacs-startup-lists '((recents . 5)
-                                  (projects . 7))
-    ;; True if the home buffer should respond to resize events.
-    dotspacemacs-startup-buffer-responsive t
-    ;; Default major mode of the scratch buffer (default `text-mode')
-    dotspacemacs-scratch-mode 'text-mode
-    ;; List of themes, the first of the list is loaded when spacemacs starts.
-    ;; Press <SPC> T n to cycle to the next theme in the list (works great
-    ;; with 2 themes variants, one dark and one light)
-    dotspacemacs-themes '(spacemacs-dark
-                           spacemacs-light)
-    ;; If non nil the cursor color matches the state color in GUI Emacs.
-    dotspacemacs-colorize-cursor-according-to-state t
-    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
-    ;; quickly tweak the mode-line size to make separators look not too crappy.
-    dotspacemacs-default-font '("Source Code Pro"
-                                 :size 13
-                                 :weight normal
-                                 :width normal
-                                 :powerline-scale 1.1)
-    ;; The leader key
-    dotspacemacs-leader-key "SPC"
-    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-    ;; (default "SPC")
-    dotspacemacs-emacs-command-key "SPC"
-    ;; The key used for Vim Ex commands (default ":")
-    dotspacemacs-ex-command-key ":"
-    ;; The leader key accessible in `emacs state' and `insert state'
-    ;; (default "M-m")
-    dotspacemacs-emacs-leader-key "M-m"
-    ;; Major mode leader key is a shortcut key which is the equivalent of
-    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
-    dotspacemacs-major-mode-leader-key ","
+   ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
+   ;; possible. Set it to nil if you have no way to use HTTPS in your
+   ;; environment, otherwise it is strongly recommended to let it set to t.
+   ;; This variable has no effect if Emacs is launched with the parameter
+   ;; `--insecure' which forces the value of this variable to nil.
+   ;; (default t)
+   dotspacemacs-elpa-https nil
+   ;; Maximum allowed time in seconds to contact an ELPA repository.
+   dotspacemacs-elpa-timeout 5
+   ;; If non nil then spacemacs will check for updates at startup
+   ;; when the current branch is not `develop'. Note that checking for
+   ;; new versions works via git commands, thus it calls GitHub services
+   ;; whenever you start Emacs. (default nil)
+   dotspacemacs-check-for-update nil
+   ;; If non-nil, a form that evaluates to a package directory. For example, to
+   ;; use different package directories for different Emacs versions, set this
+   ;; to `emacs-version'.
+   dotspacemacs-elpa-subdirectory nil
+   ;; One of `vim', `emacs' or `hybrid'.
+   ;; `hybrid' is like `vim' except that `insert state' is replaced by the
+   ;; `hybrid state' with `emacs' key bindings. The value can also be a list
+   ;; with `:variables' keyword (similar to layers). Check the editing styles
+   ;; section of the documentation for details on available variables.
+   ;; (default 'vim)
+   dotspacemacs-editing-style 'vim
+   ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
+   dotspacemacs-verbose-loading nil
+   ;; Specify the startup banner. Default value is `official', it displays
+   ;; the official spacemacs logo. An integer value is the index of text
+   ;; banner, `random' chooses a random text banner in `core/banners'
+   ;; directory. A string value must be a path to an image format supported
+   ;; by your Emacs build.
+   ;; If the value is nil then no banner is displayed. (default 'official)
+   dotspacemacs-startup-banner 'official
+   ;; List of items to show in startup buffer or an association list of
+   ;; the form `(list-type . list-size)`. If nil then it is disabled.
+   ;; Possible values for list-type are:
+   ;; `recents' `bookmarks' `projects' `agenda' `todos'."
+   ;; List sizes may be nil, in which case
+   ;; `spacemacs-buffer-startup-lists-length' takes effect.
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 7))
+   ;; True if the home buffer should respond to resize events.
+   dotspacemacs-startup-buffer-responsive t
+   ;; Default major mode of the scratch buffer (default `text-mode')
+   dotspacemacs-scratch-mode 'text-mode
+   ;; List of themes, the first of the list is loaded when spacemacs starts.
+   ;; Press <SPC> T n to cycle to the next theme in the list (works great
+   ;; with 2 themes variants, one dark and one light)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
+   ;; If non nil the cursor color matches the state color in GUI Emacs.
+   dotspacemacs-colorize-cursor-according-to-state t
+   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
+   ;; quickly tweak the mode-line size to make separators look not too crappy.
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1)
+   ;; The leader key
+   dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
+   ;; The leader key accessible in `emacs state' and `insert state'
+   ;; (default "M-m")
+   dotspacemacs-emacs-leader-key "M-m"
+   ;; Major mode leader key is a shortcut key which is the equivalent of
+   ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
+   dotspacemacs-major-mode-leader-key ","
     ;; Major mode leader key accessible in `emacs state' and `insert state'.
     ;; (default "C-M-m")
     dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -520,14 +521,14 @@ project root). Excludes the file basename. See `*buffer-name' for that."
   ;; If there is more than one, they won't work right.
   '(ansi-color-faces-vector
      [default default default italic underline success warning error])
- '(evil-cross-lines t)
- '(evil-escape-key-sequence "fd")
- '(evil-want-Y-yank-to-eol nil)
- '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
+  '(evil-cross-lines t)
+  '(evil-escape-key-sequence "fd")
+  '(evil-want-Y-yank-to-eol nil)
+  '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
   '(golden-ratio-exclude-modes
      (quote
        ("speedbar-mode" "gdb-memory-mode" "gdb-disassembly-mode" "gdb-inferior-io-mode" "gdb-frames-mode" "gdb-threads-mode" "gdb-breakpoints-mode" "gdb-registers-mode" "gdb-locals-mode" "gud-mode" "dired-mode" "ediff-mode" "calc-mode" "bs-mode")))
- '(golden-ratio-mode t)
+  '(golden-ratio-mode t)
   '(helm-projectile-grep-or-ack-actions
      (quote
        ("Find file" helm-grep-action "Find file other frame" helm-grep-other-frame
