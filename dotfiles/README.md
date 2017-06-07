@@ -21,8 +21,8 @@ git config core.worktree "../../"
 # We can do that by "resetting" back to the state that the files were in from our remote repo:
 git reset --hard origin/master
 
-# Install vim plugins
+# Install submodules
 cd ~
-echo "gitdir: /home/username/dotfiles/.git" > ~/.git
+echo "gitdir: /home/`whoami`/dotfiles/.git" > ~/.git
 git submodule update --init
 ```
