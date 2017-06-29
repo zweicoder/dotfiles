@@ -4,3 +4,6 @@
 [submodule "dottmux"]
 	path = dottmux
 	url = https://github.com/gpakosz/.tmux.git
+[submodule "magic"]
+	path = magic
+	url = https://github.com/zweicoder/magic.git
