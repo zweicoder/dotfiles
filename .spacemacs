@@ -334,21 +334,32 @@ you should place your code here."
     )
 
   (golden-ratio-mode t)
+  ;; Make golden ratio work well with ediff mode?
+  (defun pl/ediff-comparison-buffer-p ()
+    (and (boundp 'ediff-this-buffer-ediff-sessions)
+      ediff-this-buffer-ediff-sessions))
   (with-eval-after-load "golden-ratio"
     '(progn
        (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
        (add-to-list 'golden-ratio-inhibit-functions 'pl/ediff-comparison-buffer-p)))
-  (add-hook 'ediff-startup-hook 'my-ediff-startup-hook)
 
+  ;; Ediff settings
   (defun my-ediff-startup-hook ()
     "Workaround to balance the ediff windows when golden-ratio is enabled."
     ;; There's probably a better way to do it.
     (ediff-toggle-split)
     (ediff-toggle-split))
+  (add-hook 'ediff-startup-hook 'my-ediff-startup-hook)
+  ;; Press c to copy both regions in ediff
+  (defun ediff-copy-both-to-C ()
+    (interactive)
+    (ediff-copy-diff ediff-current-difference nil 'C nil
+      (concat
+        (ediff-get-region-contents ediff-current-difference 'A ediff-control-buffer)
+        (ediff-get-region-contents ediff-current-difference 'B ediff-control-buffer))))
+  (defun add-c-to-ediff-mode-map () (define-key ediff-mode-map "c" 'ediff-copy-both-to-C))
+  (add-hook 'ediff-keymap-setup-hook 'add-c-to-ediff-mode-map)
 
-  (defun pl/ediff-comparison-buffer-p ()
-    (and (boundp 'ediff-this-buffer-ediff-sessions)
-      ediff-this-buffer-ediff-sessions))
 
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
@@ -515,20 +526,20 @@ project root). Excludes the file basename. See `*buffer-name' for that."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
   '(ansi-color-faces-vector
      [default default default italic underline success warning error])
-  '(evil-cross-lines t)
-  '(evil-escape-key-sequence "fd")
-  '(evil-want-Y-yank-to-eol nil)
-  '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
+ '(evil-cross-lines t)
+ '(evil-escape-key-sequence "fd")
+ '(evil-want-Y-yank-to-eol nil)
+ '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
   '(golden-ratio-exclude-modes
      (quote
        ("speedbar-mode" "gdb-memory-mode" "gdb-disassembly-mode" "gdb-inferior-io-mode" "gdb-frames-mode" "gdb-threads-mode" "gdb-breakpoints-mode" "gdb-registers-mode" "gdb-locals-mode" "gud-mode" "dired-mode" "ediff-mode" "calc-mode" "bs-mode")))
-  '(golden-ratio-mode t)
+ '(golden-ratio-mode t)
   '(helm-projectile-grep-or-ack-actions
      (quote
        ("Find file" helm-grep-action "Find file other frame" helm-grep-other-frame
@@ -537,14 +548,17 @@ project root). Excludes the file basename. See `*buffer-name' for that."
              (locate-library "elscreen")
              "Find file in Elscreen"))
          helm-grep-jump-elscreen "Save results in grep buffer" helm-grep-save-results "Find file other window" helm-grep-other-window "something" helm-grep-other-window)))
-  '(js-indent-level 2 t)
-  '(js2-strict-trailing-comma-warning nil)
-  '(line-number-mode nil)
-  '(org-directory "~/Dropbox/org")
-  '(paradox-github-token t))
+ '(js-indent-level 2)
+ '(js2-strict-trailing-comma-warning nil)
+ '(line-number-mode nil)
+ '(org-directory "~/Dropbox/org")
+ '(paradox-github-token t)
+  '(projectile-globally-ignored-directories
+     (quote
+       (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "virtualenv" "node_modules"))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
