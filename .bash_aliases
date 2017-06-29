@@ -38,19 +38,20 @@ alias em='emacs -nw'
 alias sm='emacs &'
 alias dc='docker-compose'
 
-# Magic scripts
-function build() {
-    if [ -f .magic/build.sh ]; then
-        .magic/build.sh
-    else
-        echo '.build.sh not found in current directory'
+# cwd specific magic scripts
+function magic() {
+    [ $# == 0 ] && return
+    SCRIPT=$1
+    if [ ! -d .magic ]; then
+        echo ".magic/ not found in current directory"
+        return
     fi
-}
 
-function deploy() {
-    if [ -f .magic/deploy.sh ]; then
-        .magic/deploy.sh
+    if [ -f .magic/$SCRIPT.sh ]; then
+        .magic/$SCRIPT.sh
+    elif [ -f .magic/$SCRIPT ]; then
+        .magic/$SCRIPT
     else
-        echo '.deploy.sh not found in current directory'
+        echo "$SCRIPT.sh not found in .magic/"
     fi
 }
