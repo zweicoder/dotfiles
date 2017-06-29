@@ -1,13 +1,14 @@
 # Handy way to cd and ls
 g(){ cd "$1" && ls; }
 
-function __cheat() {                
-if [ $# == 1 ]; then                
+function __cheat() {
+if [ $# == 1 ]; then
     cheat $1 | cli-md
-else                                
-    cheat $@                        
-fi                                  
+else
+    cheat $@
+fi
 }
+
 alias cheat=__cheat
 
 # Activate virtual env
@@ -36,3 +37,20 @@ alias prettify='prettier --single-quote --bracket-spacing true --trailing-comma 
 alias em='emacs -nw'
 alias sm='emacs &'
 alias dc='docker-compose'
+
+# Magic scripts
+function build() {
+    if [ -f .magic/build.sh ]; then
+        .magic/build.sh
+    else
+        echo '.build.sh not found in current directory'
+    fi
+}
+
+function deploy() {
+    if [ -f .magic/deploy.sh ]; then
+        .magic/deploy.sh
+    else
+        echo '.deploy.sh not found in current directory'
+    fi
+}
