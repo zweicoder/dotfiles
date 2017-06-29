@@ -31,7 +31,7 @@ values."
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
     '(
-      yaml
+       yaml
        typescript
        html
        javascript
@@ -47,6 +47,7 @@ values."
        ;; better-defaults
        emacs-lisp
        git
+       (go :variables go-tab-width 4)
        markdown
        org
        c-c++
@@ -57,7 +58,6 @@ values."
        spell-checking
        syntax-checking
        version-control
-       spacemacs-prettier ;;https://github.com/praveenperera/spacemacs-prettier
        colors
        )
     ;; List of additional packages that will be installed without being
@@ -68,6 +68,7 @@ values."
                                         helm-ext
                                         ac-etags
                                         dockerfile-mode
+                                        prettier-js
                                         )
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()
@@ -80,7 +81,8 @@ values."
     ;; `used-but-keep-unused' installs only the used packages but won't uninstall
     ;; them if they become unused. `all' installs *all* packages supported by
     ;; Spacemacs and never uninstall them. (default is `used-only')
-    dotspacemacs-install-packages 'used-only))
+    dotspacemacs-install-packages 'used-only)
+  )
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -522,6 +524,7 @@ project root). Excludes the file basename. See `*buffer-name' for that."
       (kbd helm-ext-ff-horizontal-split-key) #'helm-ext-ff-execute-horizontal-split)
     (define-key helm-ag-map
       (kbd helm-ext-ff-vertical-split-key) #'helm-ext-ff-execute-vertical-split))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
