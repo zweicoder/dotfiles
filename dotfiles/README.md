@@ -25,4 +25,7 @@ git reset --hard origin/master
 cd ~
 echo "gitdir: /home/`whoami`/dotfiles/.git" > ~/.git
 git submodule update --init
+
+# Copy out machine specific configs (like .gitconfig)
+cp .gitconfig.original ../.gitconfig
 ```
