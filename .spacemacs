@@ -318,6 +318,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq-default evil-escape-unordered-key-sequence t)
   (setq neo-vc-integration 'face)
+  ;; GOPATHs
+  (setq exec-path-from-shell-variables '(
+                                          "PATH"
+                                          "GOPATH"
+                                          "GOROOT"
+                                          "GOBIN"
+                                          ))
   )
 
 (defun dotspacemacs/user-config ()

@@ -191,7 +191,7 @@ export notebook=~/notebook/private/
 
 export PATH=~/mongodb/bin:$PATH
 export PATH=~/bin:$PATH
-export GOPATH=~/go
+export GOPATH=~/go:/media/code/go-projects
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/idea-IU/bin
 export PATH="$HOME/.local/bin:$PATH"
