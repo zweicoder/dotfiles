@@ -449,7 +449,7 @@ you should place your code here."
   (setq-default
     lisp-indent-offset 2
     ;; json-mode
-    json-encoding-default-indentation 1
+    json-encoding-default-indentation 2
     ;; js2-mode
     js-indent-level 2
     js-curly-indent-offset 1
