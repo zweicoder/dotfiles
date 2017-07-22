@@ -215,4 +215,6 @@ export NVM_DIR="/home/`whoami`/.nvm"
 
 # tmuxinator
 [[ -s ~/bin/tmuxinator.bash ]] && . ~/bin/tmuxinator.bash
-
+ 
+# gopass autocompletion
+[[ -n `which gopass` ]] && source <(gopass completion bash)
