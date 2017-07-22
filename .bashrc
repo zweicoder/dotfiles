@@ -189,15 +189,14 @@ export ideas=~/notebook/private/ideas
 export notebook=~/notebook/private/
 
 
-export PATH=~/mongodb/bin:$PATH
 export PATH=~/bin:$PATH
 export GOPATH=~/go:/media/code/go-projects
-export PATH=$PATH:$GOPATH/bin
+GOPATHBINS=~/go/bin:/media/code/go-projects/bin
+export PATH=$PATH:$GOPATHBINS
 export PATH=$PATH:~/idea-IU/bin
 export PATH="$HOME/.local/bin:$PATH"
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export PYTHONPATH=~/xgboost/python-package
 
 # Remember to install powerline-fonts and then change the terminal font to Source Code Pro Semibold size 11
 function _update_ps1() {
