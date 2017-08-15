@@ -31,6 +31,7 @@ values."
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
     '(
+       react
        sql
        yaml
        typescript
@@ -454,17 +455,20 @@ you should place your code here."
     js-indent-level 2
     js-curly-indent-offset 1
     js2-basic-offset 2
-    react-mode-offset 4
     ;; typescript mode
     typescript-expr-indent-offset 2
     typescript-indent-level 2
     ;; web-mode
     css-indent-offset 2
-    web-mode-markup-indent-offset 4
-    web-mode-css-indent-offset 4
-    web-mode-code-indent-offset 4
-    web-mode-attr-indent-offset 4
+    web-mode-markup-indent-offset 2
+    web-mode-css-indent-offset 2
+    web-mode-code-indent-offset 2
+    web-mode-attr-indent-offset 2
     )
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
   ;; js editing configurations
   ;; -----------------
   ;; use local eslint
@@ -561,8 +565,8 @@ project root). Excludes the file basename. See `*buffer-name' for that."
              "Find file in Elscreen"))
          helm-grep-jump-elscreen "Save results in grep buffer" helm-grep-save-results "Find file other window" helm-grep-other-window "something" helm-grep-other-window)))
  '(js-indent-level 2)
+ '(js2-basic-offset 2)
  '(js2-strict-trailing-comma-warning nil)
- '(json-reformat:indent-width 2)
  '(line-number-mode nil)
  '(org-directory "~/Dropbox/org")
  '(paradox-github-token t)
