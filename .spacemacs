@@ -37,6 +37,7 @@ values."
        typescript
        html
        javascript
+       nginx
        python
        elixir
        ;; ----------------------------------------------------------------
@@ -395,6 +396,7 @@ you should place your code here."
       (funcall command (prefix-numeric-value count))))
 
   (define-key evil-motion-state-map (kbd "k") 'my-evil-previous-line)
+  (define-key evil-normal-state-map (kbd "C-;") 'evil-repeat-find-char-reverse)
 
   ;; Make ctrl backspace work like normal people
   (defun aborn/backward-kill-word ()
@@ -434,13 +436,13 @@ you should place your code here."
     'aborn/backward-kill-word)
   ;; Prettier
   ;; prettier hook
-  (setq prettier-args '(
+  (require 'prettier-js)
+  (setq prettier-target-mode "js2-mode")
+  (setq prettier-js-args '(
                          "--trailing-comma" "es5"
                          "--bracket-spacing" "true"
                          "--single-quote" "true"
                          ))
-  (require 'prettier-js)
-  (setq prettier-target-mode "js2-mode")
   (remove-hook 'before-save-hook 'prettier-before-save t
     )
   ;; (add-hook 'js2-mode-hook
