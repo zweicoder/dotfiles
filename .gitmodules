@@ -7,3 +7,6 @@
 [submodule "magic"]
 	path = magic
 	url = https://github.com/zweicoder/magic.git
+[submodule ".zsh/themes/powerlevel9k"]
+	path = .zsh/themes/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git
