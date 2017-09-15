@@ -17,5 +17,6 @@
     lgall = lg1 --all
     st = status --short --branch
     cleanup = !"git branch --merged origin/master | grep  -v '\\*\\|master\\|develop' | xargs -i git branch -d {}"
+    remote-cleanup-dryrun = !"git branch --remote --merged origin/master | grep  -v '\\*\\|master\\|develop' | sed 's$origin/$$'"
     remote-cleanup = !"git branch --remote --merged origin/master | grep  -v '\\*\\|master\\|develop' | sed 's$origin/$$' | xargs -i git push origin --delete {}"
 
