@@ -52,7 +52,6 @@ values."
        git
        (go :variables go-tab-width 4)
        markdown
-       org
        c-c++
        (shell :variables
          shell-default-height 30
@@ -338,14 +337,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; orgmodeee
-  (with-eval-after-load 'org
-    (setq org-agenda-files (list "~/Dropbox/org/agendas.org" ))
-    )
-  (with-eval-after-load 'org-agenda
-    (require 'org-projectile)
-    (setq org-agenda-files (append org-agenda-files (org-projectile:todo-files)))
-    )
-
   (golden-ratio-mode t)
   ;; Make golden ratio work well with ediff mode?
   (defun pl/ediff-comparison-buffer-p ()
@@ -376,8 +367,6 @@ you should place your code here."
 
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
-  (define-key evil-motion-state-map "E" 'evil-end-of-line)
-  (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
   ;; Remap j k for better navigation in wrapped lines
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
@@ -443,8 +432,7 @@ you should place your code here."
                          "--bracket-spacing" "true"
                          "--single-quote" "true"
                          ))
-  (remove-hook 'before-save-hook 'prettier-before-save t
-    )
+  (remove-hook 'before-save-hook 'prettier-before-save t)
   ;; (add-hook 'js2-mode-hook
   ;;   #'(lambda ()
   ;;       (add-hook 'before-save-hook 'prettier-before-save nil t)))
@@ -539,6 +527,9 @@ project root). Excludes the file basename. See `*buffer-name' for that."
     (define-key helm-ag-map
       (kbd helm-ext-ff-vertical-split-key) #'helm-ext-ff-execute-vertical-split))
 
+  ;; c++
+  (setq-default dotspacemacs-configuration-layers
+    '((c-c++ :variables c-c++-enable-clang-support t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
