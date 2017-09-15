@@ -33,14 +33,11 @@ plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp d
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+bindkey '^H' backward-kill-word
 unsetopt share_history
 setopt APPEND_HISTORY
 eval "$(fasd --init auto)"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-# tmuxinator
-# [[ -s ~/bin/tmuxinator.bash ]] && . ~/bin/tmuxinator.bash
