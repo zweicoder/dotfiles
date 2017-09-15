@@ -28,7 +28,7 @@ ZSH_CUSTOM="$HOME/.zsh/"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd)
+plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,8 +39,8 @@ eval "$(fasd --init auto)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # NVM
-export NVM_DIR="/home/`whoami`/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # tmuxinator
-[[ -s ~/bin/tmuxinator.bash ]] && . ~/bin/tmuxinator.bash
+# [[ -s ~/bin/tmuxinator.bash ]] && . ~/bin/tmuxinator.bash
