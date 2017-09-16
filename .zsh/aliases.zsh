@@ -30,4 +30,5 @@ alias pls='sudo'
 alias em='emacs -nw'
 alias sm='emacs &'
 alias dc='docker-compose'
+alias ll='ls -lAh'
 
