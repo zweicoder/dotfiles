@@ -9,7 +9,7 @@ git reset --hard origin/master
 
 # Install submodules
 cd ~
-echo 'gitdir: "$HOME"/dotfiles/.git' > ~/.git
+echo "gitdir: $HOME/dotfiles/.git" > ~/.git
 git submodule update --init
 
 # Don't show untracked files
