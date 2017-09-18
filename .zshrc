@@ -35,8 +35,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 bindkey '^H' backward-kill-word
 unsetopt share_history
-setopt APPEND_HISTORY
-eval "$(fasd --init auto)"
+setopt APPEND_HISTORY RM_STAR_SILENT
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
