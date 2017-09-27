@@ -41,3 +41,5 @@ setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

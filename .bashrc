@@ -218,3 +218,5 @@ export NVM_DIR="/home/`whoami`/.nvm"
  
 # gopass autocompletion
 [[ -n `which gopass` ]] && source <(gopass completion bash)
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
