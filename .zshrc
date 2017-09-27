@@ -38,6 +38,10 @@ bindkey '^H' backward-kill-word
 unsetopt share_history
 setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 
+# ag - the silver searcher
+# Update ag to respect global ~/.ignore file
+alias ag='ag --path-to-ignore ~/.ignore'
+
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -45,5 +49,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^F' fzf-file-widget
 # Use ag to respect .agignore
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
