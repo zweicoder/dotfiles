@@ -29,7 +29,7 @@ ZSH_CUSTOM="$HOME/.zsh/"
 # Add wisely, as too many plugins slow down shell startup.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 bgnotify_threshold=7
-plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd tmuxinator bgnotify docker lwd)
+plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd tmuxinator bgnotify docker)
 
 source $ZSH/oh-my-zsh.sh
 
