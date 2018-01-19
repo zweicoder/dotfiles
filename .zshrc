@@ -38,9 +38,6 @@ bindkey '^H' backward-kill-word
 unsetopt share_history
 setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 
-# ag - the silver searcher
-# Update ag to respect global ~/.ignore file
-alias ag='ag --path-to-ignore ~/.ignore'
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

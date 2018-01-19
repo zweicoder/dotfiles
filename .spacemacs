@@ -368,6 +368,8 @@ you should place your code here."
 
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
+  (define-key evil-visual-state-map "E" 'evil-end-of-line)
+  (define-key evil-visual-state-map "B" 'evil-beginning-of-line)
   ;; Remap j k for better navigation in wrapped lines
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)

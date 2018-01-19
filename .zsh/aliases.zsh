@@ -8,6 +8,12 @@
 # brainstormr=~/Projects/development/planetargon/brainstormr
 # cd $brainstormr
 #
+
+# ag - the silver searcher
+# Update ag to respect global ~/.ignore file
+alias ag='ag --path-to-ignore ~/.ignore'
+
+# Convenience functions
 c () { cd "$1" && ls; }
 activate(){ . "$1/bin/activate";}
 open(){ xdg-open "$1"; }
