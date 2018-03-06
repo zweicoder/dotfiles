@@ -31,6 +31,8 @@ values."
     ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
     '(
+       csharp
+       ruby
        terraform
        react
        sql
@@ -343,11 +345,15 @@ you should place your code here."
   (defun pl/ediff-comparison-buffer-p ()
     (and (boundp 'ediff-this-buffer-ediff-sessions)
       ediff-this-buffer-ediff-sessions))
+
   (with-eval-after-load "golden-ratio"
     '(progn
        (add-to-list 'golden-ratio-exclude-modes "ediff-mode")
        (add-to-list 'golden-ratio-inhibit-functions 'pl/ediff-comparison-buffer-p)))
 
+  ;;sql-indent mode
+  (eval-after-load "sql"
+    '(load-library "sql-indent"))
   ;; Ediff settings
   (defun my-ediff-startup-hook ()
     "Workaround to balance the ediff windows when golden-ratio is enabled."
@@ -366,10 +372,15 @@ you should place your code here."
   (add-hook 'ediff-keymap-setup-hook 'add-c-to-ediff-mode-map)
 
 
+  ;; noremap B and E
   (define-key evil-normal-state-map "E" 'evil-end-of-line)
   (define-key evil-normal-state-map "B" 'evil-beginning-of-line)
+
   (define-key evil-visual-state-map "E" 'evil-end-of-line)
   (define-key evil-visual-state-map "B" 'evil-beginning-of-line)
+
+  (define-key evil-motion-state-map "E" 'evil-end-of-line)
+  (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
   ;; Remap j k for better navigation in wrapped lines
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
@@ -538,7 +549,7 @@ project root). Excludes the file basename. See `*buffer-name' for that."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
+ ;; custom-set-variables was added by Custom$.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
