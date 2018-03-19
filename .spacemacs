@@ -76,7 +76,8 @@ values."
                                         prettier-js
                                         )
     ;; A list of packages that cannot be updated.
-    dotspacemacs-frozen-packages '()
+    dotspacemacs-frozen-packages '(fill-column-indicator)
+    ;; dotspacemacs-frozen-packages '()
     ;; A list of packages that will not be installed and loaded.
     dotspacemacs-excluded-packages '()
     ;; Defines the behaviour of Spacemacs when installing packages.
