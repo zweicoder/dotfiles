@@ -443,10 +443,10 @@ you should place your code here."
   (require 'prettier-js)
   (setq prettier-target-mode "js2-mode")
   (setq prettier-js-args '(
-                         "--trailing-comma" "es5"
-                         "--bracket-spacing" "true"
-                         "--single-quote" "true"
-                         ))
+                            "--trailing-comma" "es5"
+                            "--bracket-spacing" "true"
+                            "--single-quote" "true"
+                            ))
   (remove-hook 'before-save-hook 'prettier-before-save t)
   ;; (add-hook 'js2-mode-hook
   ;;   #'(lambda ()
@@ -458,7 +458,7 @@ you should place your code here."
     json-encoding-default-indentation 2
     ;; js2-mode
     js-indent-level 2
-    js-curly-indent-offset 1
+    js-curly-indent-offset 0
     js2-basic-offset 2
     ;; typescript mode
     typescript-expr-indent-offset 2
@@ -550,20 +550,20 @@ project root). Excludes the file basename. See `*buffer-name' for that."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
- ;; custom-set-variables was added by Custom$.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
   '(ansi-color-faces-vector
      [default default default italic underline success warning error])
- '(evil-cross-lines t)
- '(evil-escape-key-sequence "fd")
- '(evil-want-Y-yank-to-eol nil)
- '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
+  '(evil-cross-lines t)
+  '(evil-escape-key-sequence "fd")
+  '(evil-want-Y-yank-to-eol nil)
+  '(golden-ratio-exclude-buffer-names (quote (" *which-key*" "*LV*" " *NeoTree*" "*Ediff*")))
   '(golden-ratio-exclude-modes
      (quote
        ("speedbar-mode" "gdb-memory-mode" "gdb-disassembly-mode" "gdb-inferior-io-mode" "gdb-frames-mode" "gdb-threads-mode" "gdb-breakpoints-mode" "gdb-registers-mode" "gdb-locals-mode" "gud-mode" "dired-mode" "ediff-mode" "calc-mode" "bs-mode")))
- '(golden-ratio-mode t)
+  '(golden-ratio-mode t)
   '(helm-projectile-grep-or-ack-actions
      (quote
        ("Find file" helm-grep-action "Find file other frame" helm-grep-other-frame
@@ -572,18 +572,21 @@ project root). Excludes the file basename. See `*buffer-name' for that."
              (locate-library "elscreen")
              "Find file in Elscreen"))
          helm-grep-jump-elscreen "Save results in grep buffer" helm-grep-save-results "Find file other window" helm-grep-other-window "something" helm-grep-other-window)))
- '(js-indent-level 2)
- '(js2-basic-offset 2)
- '(js2-strict-trailing-comma-warning nil)
- '(line-number-mode nil)
- '(org-directory "~/Dropbox/org")
- '(paradox-github-token t)
+  '(js-indent-level 2)
+  '(js2-basic-offset 2)
+  '(js2-strict-trailing-comma-warning nil)
+  '(line-number-mode nil)
+  '(org-directory "~/Dropbox/org")
+  '(package-selected-packages
+     (quote
+       (terraform-mode hcl-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake omnisharp shut-up minitest csharp-mode chruby bundler inf-ruby yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit sql-indent spaceline smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pip-requirements persp-mode pcre2el paradox orgit org-bullets open-junk-file ob-elixir nginx-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-ext helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio go-guru go-eldoc gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-mix flycheck-credo flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump dockerfile-mode disaster diff-hl define-word cython-mode company-web company-tern company-statistics company-shell company-go company-c-headers company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell ac-etags)))
+  '(paradox-github-token t)
   '(projectile-globally-ignored-directories
      (quote
        (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "venv" "virtualenv" "node_modules"))))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )
