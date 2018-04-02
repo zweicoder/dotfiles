@@ -460,6 +460,7 @@ you should place your code here."
     js-indent-level 2
     js-curly-indent-offset 0
     js2-basic-offset 2
+    js-switch-indent-offset 2
     ;; typescript mode
     typescript-expr-indent-offset 2
     typescript-indent-level 2
