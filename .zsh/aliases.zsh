@@ -17,6 +17,7 @@ alias ag='ag --path-to-ignore ~/.ignore'
 c () { cd "$1" && ls; }
 activate(){ . "$1/bin/activate";}
 open(){ xdg-open "$1"; }
+difff(){ diff -W `tput cols` -y "$1" "$2" | colordiff | less -R }
 
 # FASD
 alias v='f -e vim'

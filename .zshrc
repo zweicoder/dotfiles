@@ -5,6 +5,7 @@ export GOPATH=~/go:/media/code/go-projects
 GOPATHBINS=~/go/bin:/media/code/go-projects/bin
 export PATH=$PATH:$GOPATHBINS
 export PATH=$PATH:~/idea-IU/bin
+export PATH=$PATH:~/.yarn/bin
 export PATH="$HOME/.local/bin:$PATH"
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -49,3 +50,5 @@ bindkey '^F' fzf-file-widget
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# added by Anaconda3 installer
+export PATH="/home/pewpew/anaconda3/bin:$PATH"

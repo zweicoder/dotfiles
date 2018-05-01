@@ -14,3 +14,11 @@ git submodule update --init
 
 # Don't show untracked files
 git config status.showUntrackedFiles no
+
+echo -n 'Install zsh config? Y/n'
+read install_zsh
+if [ $install_zsh === 'Y ']; then
+	sudo apt install zsh
+	sudo chsh -s `which zsh`
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi

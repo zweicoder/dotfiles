@@ -220,3 +220,6 @@ export NVM_DIR="/home/`whoami`/.nvm"
 [[ -n `which gopass` ]] && source <(gopass completion bash)
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by Anaconda3 installer
+export PATH="/home/pewpew/anaconda3/bin:$PATH"
