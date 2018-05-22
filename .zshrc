@@ -41,8 +41,34 @@ setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# Setup lazy loading for nvm, node, npm and potentially other cli stuff
+NVM_INITIALIZED=false
+function initialize_nvm(){
+	if [ "$NVM_INITIALIZED" = false ];
+	then
+		# echo 'Initializing nvm'
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+		NVM_INITIALIZED=true
+	fi
+}
+function nvm(){
+	initialize_nvm
+	# export NVM_DIR="$HOME/.nvm"
+	# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+	nvm $@
+}
+
+function node(){
+	unset -f node
+	initialize_nvm
+	node $@
+}
+function npm(){
+	unset -f npm
+	initialize_nvm
+	npm $@
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^F' fzf-file-widget
