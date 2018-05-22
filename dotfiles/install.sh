@@ -44,9 +44,8 @@ then
 	fi
 fi
 
-echo -n 'Install misc. CLI goodies? Y/n'
-read install_cli_goodies
-if [ $install_cli_goodies == 'Y' ];
-then
-	npm i -g diff-so-fancy
-fi
+# echo -n 'Install misc. CLI goodies? Y/n'
+# read install_cli_goodies
+# if [ $install_cli_goodies == 'Y' ];
+# then
+# fi
