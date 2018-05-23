@@ -249,6 +249,9 @@ set -g mouse on
 # Shorter repeat time
 set-option -g repeat-time 1000
 
+# Proper screen sizing
+setw -g aggressive-resize on
+
 # Key bindings
 bind | split-window -h
 
