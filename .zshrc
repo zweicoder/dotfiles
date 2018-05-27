@@ -69,6 +69,16 @@ function npm(){
 	initialize_nvm
 	npm $@
 }
+function tldr(){
+	unset -f tldr
+	initialize_nvm
+	tldr $@
+}
+function yarn(){
+	unset -f yarn
+	initialize_nvm
+	yarn $@
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^F' fzf-file-widget
