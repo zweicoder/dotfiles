@@ -74,6 +74,7 @@ values."
                                         ac-etags
                                         dockerfile-mode
                                         prettier-js
+                                        groovy-mode
                                         )
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '(fill-column-indicator)
@@ -340,6 +341,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (add-to-list 'auto-mode-alist '("Jenkisfile" . groovy-mode))
   (golden-ratio-mode t)
   ;; Make golden ratio work well with ediff mode?
   (defun pl/ediff-comparison-buffer-p ()

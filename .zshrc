@@ -5,9 +5,6 @@
 HISTSIZE=500000
 HISTFILESIZE=100000
 HISTORY_IGNORE="(ls|pwd|exit|bg|fg|history|clear)"
-bindkey '^H' backward-kill-word
-unsetopt share_history
-setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -32,6 +29,10 @@ plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp d
 
 source $ZSH/oh-my-zsh.sh
 
+# Override certain config in zsh
+bindkey '^H' backward-kill-word
+unsetopt share_history
+setopt APPEND_HISTORY RM_STAR_SILENT NO_HIST_VERIFY
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 bindkey '^F' fzf-file-widget
