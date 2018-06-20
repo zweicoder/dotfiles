@@ -11,7 +11,7 @@ export PATH="/home/pewpew/anaconda3/bin:$PATH"
 # NVM
 # Hard code default to lts/carbon bin folder for spacemacs / CLI tools
 # Gets overwritten when nvm initializes
-export NVMBIN=$HOME/.nvm/versions/node/v8.9.3/bin
+export NVMBIN=$HOME/.nvm/versions/node/v8.11.3/bin
 export PATH=$PATH:$NVMBIN
 # Setup lazy loading for nvm, node, npm and potentially other cli stuff
 NVM_INITIALIZED=false
