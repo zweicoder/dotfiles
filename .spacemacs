@@ -471,6 +471,8 @@ you should place your code here."
     web-mode-css-indent-offset 2
     web-mode-code-indent-offset 2
     web-mode-attr-indent-offset 2
+    ;; groovy-mode
+    groovy-indent-offset 2
     )
   (with-eval-after-load 'web-mode
     (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
