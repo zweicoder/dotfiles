@@ -3,7 +3,7 @@ export GOPATH=~/go:/media/code/go-projects
 GOPATHBINS=~/go/bin:/media/code/go-projects/bin
 export PATH=$PATH:$GOPATHBINS
 export PATH=$PATH:~/idea-IU/bin
-export PATH=$PATH:~/.yarn/bin
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 # added by Anaconda3 installer
 export PATH="/home/pewpew/anaconda3/bin:$PATH"
@@ -28,5 +28,11 @@ function initialize_nvm(){
 function nvm(){
 	initialize_nvm
 	nvm $@
+}
+
+function yarn(){
+	unset -f yarn
+	initialize_nvm
+	yarn $@
 }
 
