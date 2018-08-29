@@ -40,3 +40,4 @@ alias dc='docker-compose'
 alias ll='ls -lAh'
 
 alias k='kubectl'
+alias tf='terraform'

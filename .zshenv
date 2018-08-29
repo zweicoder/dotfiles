@@ -30,9 +30,43 @@ function nvm(){
 	nvm $@
 }
 
+function node(){
+	unset -f node
+	initialize_nvm
+	node $@
+}
+
 function yarn(){
 	unset -f yarn
 	initialize_nvm
 	yarn $@
 }
 
+# pyenv
+PYENV_INITIALIZED=false
+function initialize_pyenv() {
+	if [ "$NVM_INITIALIZED" = false ];
+	then
+		export PATH="/home/czw/.pyenv/bin:$PATH"
+		eval "$(pyenv init -)"
+		eval "$(pyenv virtualenv-init -)"
+		PYENV_INITIALIZED=true
+	fi
+}
+initialize_pyenv
+# function pyenv() {
+# 	unset -f pyenv
+# 	initialize_pyenv
+# 	pyenv $@
+# }
+
+# function python() {
+# 	unset -f python
+# 	initialize_pyenv
+# 	python $@
+# }
+# function pip() {
+# 	unset -f pip
+# 	initialize_pyenv
+# 	pip $@
+# }
