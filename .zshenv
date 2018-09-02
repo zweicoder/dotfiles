@@ -45,7 +45,7 @@ function yarn(){
 # pyenv
 PYENV_INITIALIZED=false
 function initialize_pyenv() {
-	if [ "$NVM_INITIALIZED" = false ];
+	if [ "$PYENV_INITIALIZED" = false ] && [ -n "$(command -v pyenv)"  ];
 	then
 		export PATH="/home/czw/.pyenv/bin:$PATH"
 		eval "$(pyenv init -)"
