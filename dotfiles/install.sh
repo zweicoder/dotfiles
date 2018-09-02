@@ -4,7 +4,13 @@ if ! [ -d "$HOME/dotfiles" ]; then
 	echo 'Setting up dotfiles...'
 	if [ -z `command -v git`];
 	then
-		echo 'Please install git'
+		echo '======================================================='
+		echo '	Installing git...'
+		echo '======================================================='
+		sudo apt-get install python-software-properties
+		sudo add-apt-repository ppa:git-core/ppa
+		sudo apt-get update
+		sudo apt-get install git
 		exit 0
 	fi
 
@@ -44,11 +50,19 @@ then
 		echo '======================================================='
 		echo '	Installing nvm...'
 		echo '======================================================='
-		exit 1
 		wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 		source ~/.bashrc
 		nvm install lts/carbon
 		nvm use lts/carbon
+		echo 'Successfully installed nvm. Make sure the bin path in ~/.zshenv is same as lts/carbon version for bins to work'
+	fi
+
+	if ! [ -d "$HOME/.nvm" ];
+	then
+		echo '======================================================='
+		echo '	Installing diff-so-fancy...'
+		echo '======================================================='
+		npm i -g diff-so-fancy
 	fi
 
 	if [ -z `command -v bat` ];
@@ -75,11 +89,3 @@ then
 	rm -rf /tmp/dotfiles
 fi
 
-
-
-
-# echo -n 'Install misc. CLI goodies? Y/n'
-# read install_cli_goodies
-# if [ $install_cli_goodies == 'Y' ];
-# then
-# fi
