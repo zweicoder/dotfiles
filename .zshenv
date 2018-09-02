@@ -45,7 +45,7 @@ function yarn(){
 # pyenv
 PYENV_INITIALIZED=false
 function initialize_pyenv() {
-	if [ "$PYENV_INITIALIZED" = false ] && [ -n "$(command -v pyenv)"  ];
+	if [ "$PYENV_INITIALIZED" = false ] ;
 	then
 		export PATH="/home/czw/.pyenv/bin:$PATH"
 		eval "$(pyenv init -)"
@@ -53,7 +53,11 @@ function initialize_pyenv() {
 		PYENV_INITIALIZED=true
 	fi
 }
-initialize_pyenv
+# Couldn't get this to work with spacemacs
+if  [ -n "$(command -v pyenv)"  ];
+then
+	initialize_pyenv
+fi
 # function pyenv() {
 # 	unset -f pyenv
 # 	initialize_pyenv
@@ -70,3 +74,6 @@ initialize_pyenv
 # 	initialize_pyenv
 # 	pip $@
 # }
+
+
+

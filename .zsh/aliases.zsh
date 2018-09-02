@@ -41,3 +41,6 @@ alias ll='ls -lAh'
 
 alias k='kubectl'
 alias tf='terraform'
+
+[ -n `command -v bat` ] && alias cat='bat'
+[ -n `command -v fd` ] && alias find='fd'
