@@ -33,7 +33,7 @@ fi
 
 echo -n 'Install CLI awesomeness? Y/n '
 read make_cli_great_again
-if [ $make_cli_great_again == 'Y' ];
+if [ "${make_cli_great_again,,}" == 'y' ];
 then
 	mkdir -p /tmp/dotfiles/ || true
 	if [ -z `command -v zsh` ]; then
