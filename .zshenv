@@ -37,6 +37,12 @@ function node(){
 	node $@
 }
 
+function npm(){
+	unset -f npm
+	initialize_nvm
+	npm $@
+}
+
 function yarn(){
 	unset -f yarn
 	initialize_nvm
