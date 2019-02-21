@@ -127,8 +127,9 @@ call s:spacevim_bind_plug('omap', 'J', 'easymotion-tn', '(easymotion-tn)')
 set smarttab
 set cindent
 filetype plugin indent on
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+set shiftwidth=2 tabstop=2 expandtab
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2
 autocmd FileType python     setlocal shiftwidth=4 softtabstop=4 expandtab
 " }}}
