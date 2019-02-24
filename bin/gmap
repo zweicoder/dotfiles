@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import re
+import sys
+import webbrowser
+
+def usage():
+    print('gmap from <src> to <dst>')
+
+def encode(s):
+    return '+'.join(s.split())
+
+def handle(*args):
+    if not args:
+        usage()
+        return
+    query = ' '.join(args).lower()
+    match = re.search(r'from ([a-z0-9\s]+) to ([a-z0-9\s]+)', query)
+    if match:
+        src, dst = [encode(s) for s in match.groups()]
+        return f'https://www.google.com.sg/maps/dir/{src}/{dst}'
+    usage()
+
+ret = handle(*sys.argv[1:])
+if not ret:
+    process.exit(1)
+webbrowser.open(ret, new = 2)
