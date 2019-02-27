@@ -2,7 +2,7 @@
 set -euo pipefail
 if ! [ -d "$HOME/dotfiles" ]; then
   echo 'Setting up dotfiles...'
-  if [ -z `command -v git`];
+  if [ -z `command -v git` ];
   then
     echo '======================================================='
     echo '  Installing git...'
@@ -56,12 +56,8 @@ then
     nvm install lts/carbon
     nvm use lts/carbon
     echo 'Successfully installed nvm. Make sure the bin path in ~/.zshenv is same as lts/carbon version for bins to work'
-  fi
-
-  if ! [ -d "$HOME/.nvm" ];
-  then
     echo '======================================================='
-    echo '  Installing diff-so-fancy...'
+    echo '  Installing npm packages...'
     echo '======================================================='
     npm i -g diff-so-fancy
   fi
