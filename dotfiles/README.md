@@ -15,7 +15,7 @@ To clone on another machine:
 Use the install script:
 `curl -o- https://raw.githubusercontent.com/zweicoder/dotfiles/master/dotfiles/install.sh | bash`
 or
-`curl -o- zwei.codes/dotfiles`
+`curl -Lo- zwei.codes/dotfiles > dotfiles.sh`
 
 Manually:
 
