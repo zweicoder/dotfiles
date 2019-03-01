@@ -46,20 +46,28 @@ then
     echo 'Successfully installed zsh. Get better terminal colors from https://github.com/Mayccoll/Gogh'
   fi
 
+  echo '======================================================='
+  echo '  Installing fonts...'
+  echo '======================================================='
+  sudo apt install fonts-powerline
+  mkdir -p ~/.local/share/fonts
+  cd ~/.local/share/fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+  fc-cache -fv
+
+
   if ! [ -d "$HOME/.nvm" ];
   then
     echo '======================================================='
     echo '  Installing nvm...'
     echo '======================================================='
     wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    source ~/.bashrc
+    #source ~/.bashrc
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
     nvm install lts/carbon
     nvm use lts/carbon
     echo 'Successfully installed nvm. Make sure the bin path in ~/.zshenv is same as lts/carbon version for bins to work'
-    echo '======================================================='
-    echo '  Installing npm packages...'
-    echo '======================================================='
-    npm i -g diff-so-fancy
   fi
 
   if [ -z `command -v bat` ];
