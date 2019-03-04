@@ -36,6 +36,7 @@ read make_cli_great_again
 if [ "${make_cli_great_again,,}" == 'y' ];
 then
   mkdir -p /tmp/dotfiles/ || true
+  # Install zsh
   if [ -z `command -v zsh` ]; then
     echo '======================================================='
     echo '  Installing zsh...'
@@ -46,6 +47,12 @@ then
     echo 'Successfully installed zsh. Get better terminal colors from https://github.com/Mayccoll/Gogh'
   fi
 
+  # Install oh my zsh
+  if ! [ -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  fi
+
+  # Fonts for powerline and nerdfonts for symbols. Might have to change Terminal font to Droid sans mono afterwards
   echo '======================================================='
   echo '  Installing fonts...'
   echo '======================================================='
