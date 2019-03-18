@@ -18,7 +18,7 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=5
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv background_jobs time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status virtualenv background_jobs time)
 # POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
