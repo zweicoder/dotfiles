@@ -75,7 +75,7 @@ call spacevim#bootstrap()
 " => Mappings
 " ===============================
   " Map Ctrl-Backspace to delete the previous word in insert mode.
-  imap <C-h> <C-W> 
+  imap <C-h> <C-W>
 
   " Map Ctrl+Shift+[Down/Up] to move lines (ctrl + shift + [jk] has issues)
   nnoremap <C-S-Down> :m .+1<CR>==
