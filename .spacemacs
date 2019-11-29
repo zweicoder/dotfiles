@@ -554,6 +554,10 @@ project root). Excludes the file basename. See `*buffer-name' for that."
   (setq-default dotspacemacs-configuration-layers
     '((c-c++ :variables c-c++-enable-clang-support t)))
 
+  ;; elixir
+  (add-hook 'elixir-mode-hook
+    (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+
   ;; org-mode
 
   ;; org-mode capture templates

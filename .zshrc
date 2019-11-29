@@ -25,7 +25,7 @@ ZSH_CUSTOM="$HOME/.zsh/"
 # Add wisely, as too many plugins slow down shell startup.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 bgnotify_threshold=7
-plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd tmuxinator bgnotify docker)
+plugins=(git gitfast git-extras colored-man-pages command-not-found copydir cp dircycle fasd tmuxinator bgnotify docker navi)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -39,3 +39,6 @@ bindkey '^F' fzf-file-widget
 # Use ag to respect .agignore
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Elixir shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
