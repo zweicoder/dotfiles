@@ -24,14 +24,14 @@ focus_follows_mouse no
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 show_marks yes
-
 floating_modifier $mod
 title_align center
 # These dont really work
 # default_border pixel 2
 # hide_edge_borders smart
-new_window pixel 2
-new_float pixel 2
+# new_window pixel 2
+# new_float pixel 2
+workspace_auto_back_and_forth yes
 
 
 ##===== Key bindings
@@ -40,9 +40,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # Window kill command
 bindsym $mod+Shift+q kill
-
-# start program launcher
-bindsym $mod+d exec --no-startup-id "rofi -modi 'run,window,drun' -show run"
 
 # change focus
 bindsym $mod+$left focus left
@@ -66,11 +63,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# workspace back and forth (with/without active container)
-workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
-
 # split orientation
 bindsym $mod+slash split toggle
 
@@ -81,10 +73,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+e layout toggle all
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -162,17 +154,9 @@ bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
 #Workspace cycling on output
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 bindsym $mod+Ctrl+h workspace prev_on_output
 bindsym $mod+Ctrl+l workspace next_on_output
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i 
@@ -182,14 +166,10 @@ bindsym $mod+Print exec gnome-screenshot -a
 bindsym $alt+ctrl+period exec playerctl next
 bindsym $alt+ctrl+comma exec playerctl previous
 bindsym $alt+ctrl+space exec playerctl play-pause
-
-bindsym $mod+i exec i3-input -F 'rename workspace to "%s"' -P 'Rename Workspace to: '
-bindsym $mod+p exec i3-input -F '%s' -P 'Command: '
 ##==== End Key Bindings
 
 ##===== Modes
 # [Window mode] Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -212,8 +192,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# [System Mode] Set shut down, restart and locking features
-bindsym $mod+semicolon mode "$mode_system"
+# [System Mode] Shut down, restart and locking features
 set $mode_system (l)ock, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id gnome-screensaver-command --lock, mode "default"
@@ -226,14 +205,44 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+set $mode_normal "normal"
 
-set $mode_switch "switch:"
-mode $mode_switch {
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+## [i3 Mode]
+set $mode_i3 "(r)eload (R)estart"
+mode $mode_i3 {
+# reload the configuration file
+  bindsym r reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+  bindsym Shift+r restart
 }
 
-bindsym $mod+space mode $mode_switch
+## [SPC Mode] Access to other modes via mnemonic keys
+set $mode_spc "(m)ark e(x)ec (i)3 (SPC)launch (j)ump (r)esize"
+mode $mode_spc {
+  bindsym space exec "rofi -modi 'run,drun,window' -show run"
+  bindsym j exec "rofi -modi 'run,drun,window' -show window"
+  bindsym x exec i3-input -F '%s' -P 'Command: '
+
+  bindsym Shift+s mode $mode_system
+  bindsym r mode "resize"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+space mode $mode_spc
+
+set $mode_m "(a)dd (j)ump (r)emove"
+mode $mode_m {
+  bindsym a exec i3-input -F 'mark %s' -P 'mark: '
+  bindsym r exec i3-input -F 'unmark %s' -P 'unmark: '
+  bindsym j exec i3-input -F '[con_mark="%s"] focus' -P 'jump to mark: '
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+
 ##===== Autostart applications
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
