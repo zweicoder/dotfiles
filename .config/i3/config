@@ -7,6 +7,15 @@ set $left h
 set $down j
 set $up k
 set $right l
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+##===== End Variables
 
 ##===== Theme
 # class                 border  backgr. text    indicator child_border
@@ -18,92 +27,19 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #000000
 client.background #1E272B
 
 font pango:Terminus 12px
+##===== End Theme
 
 ##===== Behavior Config
 focus_follows_mouse no
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 show_marks yes
+# Hold $mod to drag (LB) / resize (RB) floating windows
 floating_modifier $mod
 title_align center
-# These dont really work
-# default_border pixel 2
-# hide_edge_borders smart
-# new_window pixel 2
-# new_float pixel 2
-workspace_auto_back_and_forth yes
-
-
-##===== Key bindings
-
-bindsym $mod+Return exec i3-sensible-terminal
-
-# Window kill command
-bindsym $mod+Shift+q kill
-
-# change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split orientation
-bindsym $mod+slash split toggle
-
-# toggle fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+e layout toggle all
-
-# toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-# bindsym $mod+space focus mode_toggle
-
-# toggle sticky
-bindsym $mod+Shift+s sticky toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-# navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
 
 # workspaces
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
+workspace_auto_back_and_forth yes
 
 workspace 1 output primary
 workspace 2 output primary
@@ -115,49 +51,10 @@ workspace 7 output $secondary_display
 workspace 8 output $secondary_display
 workspace 9 output $secondary_display
 workspace 10 output $secondary_display
+##===== End Behavior Config
 
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
 
-# Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace number $ws1
-bindsym $mod+Ctrl+2 move container to workspace number $ws2
-bindsym $mod+Ctrl+3 move container to workspace number $ws3
-bindsym $mod+Ctrl+4 move container to workspace number $ws4
-bindsym $mod+Ctrl+5 move container to workspace number $ws5
-bindsym $mod+Ctrl+6 move container to workspace number $ws6
-bindsym $mod+Ctrl+7 move container to workspace number $ws7
-bindsym $mod+Ctrl+8 move container to workspace number $ws8
-bindsym $mod+Ctrl+9 move container to workspace number 9
-bindsym $mod+Ctrl+0 move container to workspace number 10
-
-# Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
-
-#Workspace cycling on output
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
-bindsym $mod+Ctrl+h workspace prev_on_output
-bindsym $mod+Ctrl+l workspace next_on_output
-
+##===== Key bindings
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i 
 #crop-area screenshot by pressing Mod + printscreen
@@ -193,7 +90,7 @@ mode "resize" {
 }
 
 # [System Mode] Shut down, restart and locking features
-set $mode_system (l)ock, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (l)ock, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id gnome-screensaver-command --lock, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
@@ -205,7 +102,6 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-set $mode_normal "normal"
 
 ## [i3 Mode]
 set $mode_i3 "(r)eload (R)estart"
@@ -215,7 +111,126 @@ mode $mode_i3 {
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
   bindsym Shift+r restart
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
+
+## [Normal Mode] Navigation and access to SPC
+set $mode_normal "normal"
+mode $mode_normal {
+  bindsym n exec i3-sensible-terminal
+
+# Window kill command
+  bindsym Shift+k kill
+
+# change focus
+  bindsym $left focus left
+  bindsym $down focus down
+  bindsym $up focus up
+  bindsym $right focus right
+
+  bindsym Left focus left
+  bindsym Down focus down
+  bindsym Up focus up
+  bindsym Right focus right
+
+# move focused window
+  bindsym Shift+$left move left
+  bindsym Shift+$down move down
+  bindsym Shift+$up move up
+  bindsym Shift+$right move right
+
+  bindsym Shift+Left move left
+  bindsym Shift+Down move down
+  bindsym Shift+Up move up
+  bindsym Shift+Right move right
+
+# split orientation
+  bindsym slash split toggle
+
+# toggle fullscreen mode for the focused container
+  bindsym f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+  bindsym e layout toggle all
+
+# Extract out to mode if somehow used enough
+# toggle tiling / floating
+  bindsym $mod+f floating toggle
+
+# change focus between tiling / floating windows
+  bindsym $mod+Shift+f focus mode_toggle
+
+# toggle sticky
+  bindsym Shift+s sticky toggle
+
+# focus the parent container
+  bindsym a focus parent
+  bindsym u focus parent
+  bindsym d focus child
+
+# move the currently focused window to the scratchpad
+  bindsym Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+  bindsym minus scratchpad show
+
+# navigate workspaces next / previous
+  bindsym $mod+Right workspace next_on_output
+  bindsym $mod+Left workspace prev_on_output
+  bindsym $mod+l workspace next_on_output
+  bindsym $mod+h workspace prev_on_output
+  bindsym $mod+Shift+Right move container to workspace next_on_output
+  bindsym $mod+Shift+Left  move container to workspace prev_on_output
+  bindsym $mod+Shift+l move container to workspace next_on_output
+  bindsym $mod+Shift+h move container to workspace prev_on_output
+
+# switch to workspace
+  bindsym 1 workspace number $ws1
+  bindsym 2 workspace number $ws2
+  bindsym 3 workspace number $ws3
+  bindsym 4 workspace number $ws4
+  bindsym 5 workspace number $ws5
+  bindsym 6 workspace number $ws6
+  bindsym 7 workspace number $ws7
+  bindsym 8 workspace number $ws8
+  bindsym 9 workspace number 9
+  bindsym 0 workspace number 10
+
+# Move focused container to workspace
+  bindsym Ctrl+1 move container to workspace number $ws1
+  bindsym Ctrl+2 move container to workspace number $ws2
+  bindsym Ctrl+3 move container to workspace number $ws3
+  bindsym Ctrl+4 move container to workspace number $ws4
+  bindsym Ctrl+5 move container to workspace number $ws5
+  bindsym Ctrl+6 move container to workspace number $ws6
+  bindsym Ctrl+7 move container to workspace number $ws7
+  bindsym Ctrl+8 move container to workspace number $ws8
+  bindsym Ctrl+9 move container to workspace number 9
+  bindsym Ctrl+0 move container to workspace number 10
+
+# Move to workspace with focused container
+  bindsym Shift+1 move container to workspace number $ws1; workspace number $ws1
+  bindsym Shift+2 move container to workspace number $ws2; workspace number $ws2
+  bindsym Shift+3 move container to workspace number $ws3; workspace number $ws3
+  bindsym Shift+4 move container to workspace number $ws4; workspace number $ws4
+  bindsym Shift+5 move container to workspace number $ws5; workspace number $ws5
+  bindsym Shift+6 move container to workspace number $ws6; workspace number $ws6
+  bindsym Shift+7 move container to workspace number $ws7; workspace number $ws7
+  bindsym Shift+8 move container to workspace number $ws8; workspace number $ws8
+  bindsym Shift+9 move container to workspace number 9; workspace number 9
+  bindsym Shift+0 move container to workspace number 10; workspace number 10
+
+#Workspace cycling on output
+  bindsym Tab workspace back_and_forth
+  # bindsym Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
+
+  bindsym space mode $mode_spc
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym Super_L mode $mode_normal
 
 ## [SPC Mode] Access to other modes via mnemonic keys
 set $mode_spc "(m)ark e(x)ec (i)3 (SPC)launch (j)ump (r)esize"
@@ -223,6 +238,7 @@ mode $mode_spc {
   bindsym space exec "rofi -modi 'run,drun,window' -show run"
   bindsym j exec "rofi -modi 'run,drun,window' -show window"
   bindsym x exec i3-input -F '%s' -P 'Command: '
+  bindsym i mode $mode_i3
 
   bindsym Shift+s mode $mode_system
   bindsym r mode "resize"
