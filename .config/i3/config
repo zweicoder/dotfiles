@@ -230,6 +230,7 @@ mode $mode_normal {
   bindsym space mode $mode_spc
   bindsym Return mode "default"
   bindsym Escape mode "default"
+  bindsym --release Super_L mode "default"
 }
 bindsym --release Super_L mode $mode_normal
 
