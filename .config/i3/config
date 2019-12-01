@@ -91,8 +91,8 @@ mode "resize" {
 }
 
 # [System Mode] Shut down, restart and locking features
-set $mode_system (l)ock, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown
-mode "$mode_system" {
+set $mode_system "(l)ock, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown"
+mode $mode_system {
     bindsym l exec --no-startup-id gnome-screensaver-command --lock, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
