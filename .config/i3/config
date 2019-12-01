@@ -63,6 +63,7 @@ bindsym $mod+Print exec gnome-screenshot -a
 bindsym $alt+ctrl+period exec playerctl next
 bindsym $alt+ctrl+comma exec playerctl previous
 bindsym $alt+ctrl+space exec playerctl play-pause
+bindsym $mod+enter exec i3-sensible-terminal
 ##==== End Key Bindings
 
 ##===== Modes
@@ -104,11 +105,11 @@ mode "$mode_system" {
 }
 
 ## [i3 Mode]
-set $mode_i3 "(r)eload (R)estart"
+set $mode_i3 "(r)eload (R)estart (e)dit"
 mode $mode_i3 {
 # reload the configuration file
   bindsym r reload
-
+  bindsym e exec gnome-terminal -- vim ~/.config/i3/config 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
   bindsym Shift+r restart
   bindsym Return mode "default"
@@ -121,7 +122,7 @@ mode $mode_normal {
   bindsym n exec i3-sensible-terminal
 
 # Window kill command
-  bindsym Shift+k kill
+  bindsym Shift+q kill
 
 # change focus
   bindsym $left focus left
@@ -230,7 +231,7 @@ mode $mode_normal {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym Super_L mode $mode_normal
+bindsym --release Super_L mode $mode_normal
 
 ## [SPC Mode] Access to other modes via mnemonic keys
 set $mode_spc "(m)ark e(x)ec (i)3 (SPC)launch (j)ump (r)esize"
@@ -248,6 +249,7 @@ mode $mode_spc {
 }
 bindsym $mod+space mode $mode_spc
 
+## [M Mode] Mark
 set $mode_m "(a)dd (j)ump (r)emove"
 mode $mode_m {
   bindsym a exec i3-input -F 'mark %s' -P 'mark: '
@@ -257,7 +259,6 @@ mode $mode_m {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
 
 ##===== Autostart applications
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
