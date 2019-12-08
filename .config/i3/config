@@ -1,6 +1,6 @@
 ##===== Variables
 set $primary_display HDMI-1-1
-set $s`econdary_display eDP-1-1
+set $secondary_display eDP-1-1
 set $mod Mod4
 set $alt Mod1
 set $left h
