@@ -97,6 +97,20 @@ then
     sudo dpkg -i /tmp/dotfiles/fd.deb
   fi
 
+  echo '======================================================='
+  echo '  Installing fzf...'
+  echo '======================================================='
+  $HOME/.fzf/install.sh
+
+  echo '======================================================='
+  echo '  Installing ag...'
+  echo '======================================================='
+  sudo apt-get -y install silversearcher-ag
+
+  echo '======================================================='
+  echo '  Terminal themes: https://github.com/Mayccoll/Gogh'
+  echo '======================================================='
+
   echo 'Cleaning up...'
   rm -rf /tmp/dotfiles
 fi
